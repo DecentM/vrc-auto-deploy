@@ -24,11 +24,12 @@ namespace DecentM.AutoDeploy
             return totp.ComputeTotp(DateTime.UtcNow);
         }
 
-        public static Task LoginAndDeployAsync()
+        public static IEnumerator LoginAndDeployAsync()
         {
             LoginAndDeploy();
 
-            return Task.Delay(250000);
+            while (true)
+                yield return new WaitForSeconds(1);
         }
 
         public static void LoginAndDeploy()
