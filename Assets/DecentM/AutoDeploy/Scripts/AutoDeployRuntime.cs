@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Timers;
+using UnityEngine;
 
 #if COMPILER_UDONSHARP
 using UdonSharp;
@@ -27,6 +28,9 @@ namespace DecentM.AutoDeploy
     {
 #if UNITY_EDITOR
         private const float PrepareTimeoutSeconds = 30f;
+        private const float PipelineReadinessDelaySeconds = 0.5f;
+
+        private static float pipelineReadinessElapsed = 0;
 
         private static PipelineReadiness GetPipelineReadiness()
         {
@@ -47,7 +51,20 @@ namespace DecentM.AutoDeploy
                 return PipelineReadiness.Errored;
             }
 
-            return pipelineManager.completedSDKPipeline ? PipelineReadiness.Ready : PipelineReadiness.NotReady;
+            if (!pipelineManager.completedSDKPipeline)
+                return PipelineReadiness.NotReady;
+
+            if (pipelineManager.user == null)
+                return PipelineReadiness.NotReady;
+
+            pipelineReadinessElapsed += Time.deltaTime;
+
+            if (pipelineReadinessElapsed < PipelineReadinessDelaySeconds)
+                return PipelineReadiness.NotReady;
+
+            pipelineReadinessElapsed = 0;
+
+            return PipelineReadiness.Ready;
         }
 
         private static RuntimeWorldCreation GetWorldCreation()
@@ -70,23 +87,30 @@ namespace DecentM.AutoDeploy
             return creation;
         }
 
+        private static bool isSubmitting = false;
+
         private static void SubmitUploadForm()
         {
-            RuntimeWorldCreation creation = GetWorldCreation();
+            isSubmitting = true;
 
-            // TODO: read these from settings
-            creation.blueprintName.text = "AutoDeploy Test World";
-            creation.blueprintDescription.text = "Testing deploying worlds from a CI";
-            creation.worldCapacity.text = "64";
-            creation.contentSex.isOn = false;
-            creation.contentViolence.isOn = false;
-            creation.contentGore.isOn = false;
-            creation.contentOther.isOn = false;
-            creation.releasePublic.isOn = false;
+            RuntimeWorldCreation creation = GetWorldCreation();
+            AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
+
+            creation.blueprintName.text = settings.worldName;
+            creation.blueprintDescription.text = settings.worldDescription;
+            creation.worldCapacity.text = settings.worldCapacity;
+            creation.contentSex.isOn = settings.contentSex;
+            creation.contentViolence.isOn = settings.contentViolence;
+            creation.contentGore.isOn = settings.contentGore;
+            creation.contentOther.isOn = settings.contentOther;
+            creation.releasePublic.isOn = settings.releasePublic;
+
+            // These are disabled in the UI when uploading via the SDK.
+            // Maybe they're for world authors to be able to remove tags added by vrc staff?
             creation.contentFeatured.isOn = false;
             creation.contentSDKExample.isOn = false;
 
-            // Assuming from how the inspector looks at the build stage, the "Toggle Warrant"
+            // From how the inspector looks at the build stage, it looks like the "Toggle Warrant"
             // checkbox just enables the upload button without calling into any scripts.
 
             creation.SetupUpload();
@@ -100,7 +124,7 @@ namespace DecentM.AutoDeploy
             if (creation == null)
                 return false;
 
-            // Wait for pipeline to bea ready (world settings loaded into the form)
+            // Wait for pipeline to be ready (world settings loaded into the form)
             PipelineReadiness pipelineReadiness = GetPipelineReadiness();
 
             switch (pipelineReadiness)
@@ -115,7 +139,6 @@ namespace DecentM.AutoDeploy
 
                 case PipelineReadiness.Ready:
                 default:
-                    this.enabled = false;
                     break;
             }
 
@@ -141,7 +164,8 @@ namespace DecentM.AutoDeploy
                 return;
             }
 
-            SubmitUploadForm();
+            if (!isSubmitting)
+                SubmitUploadForm();
         }
 #endif
     }

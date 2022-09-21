@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744f11e6464ee3744a5b72e117d9378a, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  storePlaintextCredentials: 1
+  username: 
+  password: 
+  use2fa: 1
+  otpToken: 
+  worldName: My World
+  worldDescription: "Testing uploading worlds using CI\u01C3"
+  worldCapacity: 64
+  contentSex: 0
+  contentViolence: 0
+  contentGore: 0
+  contentOther: 0
+  releasePublic: 0
+  contentFeatured: 0
+  contentSDKExample: 0
