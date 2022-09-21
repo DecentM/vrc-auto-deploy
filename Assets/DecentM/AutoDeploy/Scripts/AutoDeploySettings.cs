@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System;
+using Newtonsoft.Json;
 #endif
 
 namespace DecentM.AutoDeploy
@@ -37,14 +38,20 @@ namespace DecentM.AutoDeploy
         {
             get
             {
-                string envUsername = Environment.GetEnvironmentVariable("VRC_USERNAME");
-                string envPassword = Environment.GetEnvironmentVariable("VRC_PASSWORD");
-                string envOtpToken = Environment.GetEnvironmentVariable("VRC_OTP_TOKEN");
+                string path = Path.Combine(Application.dataPath, ".ignored", "auth.json");
+                Debug.Log($"[DecentM.AutoDeploy] Looking for auth file at {path}");
 
+                if (File.Exists(path))
+                {
+                    Debug.Log("[DecentM.AutoDeploy] Found auth data, reading from disk...");
+                    return JsonConvert.DeserializeObject<AuthSettings>(File.ReadAllText(path));
+                }
+
+                Debug.Log("[DecentM.AutoDeploy] Auth data doesn't exist, reading from project settings");
                 return new AuthSettings(
-                    string.IsNullOrEmpty(envUsername) ? this.username : envUsername,
-                    string.IsNullOrEmpty(envPassword) ? this.password : envPassword,
-                    string.IsNullOrEmpty(envOtpToken) ? this.otpToken : envOtpToken
+                    this.username,
+                    this.password,
+                    this.otpToken
                 );
             }
         }
