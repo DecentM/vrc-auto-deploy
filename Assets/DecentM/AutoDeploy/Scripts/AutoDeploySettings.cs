@@ -38,7 +38,7 @@ namespace DecentM.AutoDeploy
         {
             get
             {
-                string path = Path.Combine(Application.dataPath, ".ignored", "auth.json");
+                string path = Path.Combine(Application.dataPath, "..", ".ignored", "auth.json");
                 Debug.Log($"[DecentM.AutoDeploy] Looking for auth file at {path}");
 
                 if (File.Exists(path))
