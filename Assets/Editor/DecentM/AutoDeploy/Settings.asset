@@ -18,7 +18,7 @@ MonoBehaviour:
   use2fa: 0
   otpToken: 
   worldName: My World
-  worldDescription: "Testing uploading worlds using CI\u01C3"
+  worldDescription: This description was updated using GitHub Actions.
   worldCapacity: 30
   contentSex: 0
   contentViolence: 0
