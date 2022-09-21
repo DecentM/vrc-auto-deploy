@@ -7,6 +7,8 @@ using OtpNet;
 using VRC.SDKBase.Editor.BuildPipeline;
 using VRC.SDKBase.Editor;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
+using System.Collections;
 #endif
 
 namespace DecentM.AutoDeploy
@@ -20,6 +22,13 @@ namespace DecentM.AutoDeploy
             Totp totp = new Totp(secret, totpSize: 6);
 
             return totp.ComputeTotp(DateTime.UtcNow);
+        }
+
+        public static Task LoginAndDeployAsync()
+        {
+            LoginAndDeploy();
+
+            return Task.Delay(250000);
         }
 
         public static void LoginAndDeploy()

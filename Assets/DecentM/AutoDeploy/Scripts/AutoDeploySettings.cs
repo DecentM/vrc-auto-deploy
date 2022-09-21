@@ -44,7 +44,15 @@ namespace DecentM.AutoDeploy
                 if (File.Exists(path))
                 {
                     Debug.Log("[DecentM.AutoDeploy] Found auth data, reading from disk...");
-                    return JsonConvert.DeserializeObject<AuthSettings>(File.ReadAllText(path));
+
+                    try
+                    {
+                        return JsonConvert.DeserializeObject<AuthSettings>(File.ReadAllText(path));
+                    } catch (Exception e)
+                    {
+                        Debug.LogError("[DecentM.AutoDeploy] Could not read auth data, falling back to project values");
+                        Debug.LogError(e.ToString());
+                    }
                 }
 
                 Debug.Log("[DecentM.AutoDeploy] Auth data doesn't exist, reading from project settings");
