@@ -1,0 +1,16 @@
+{
+    "name": "DecentM.AutoDeploy.Editor",
+    "references": [
+        "GUID:c2558e6f3a1baff48b0e3b53bbbcd31e",
+        "GUID:6e9c6119ac4eb334284fb7b4bc6d1f05"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
