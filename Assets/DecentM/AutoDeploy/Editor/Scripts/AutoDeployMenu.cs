@@ -7,6 +7,7 @@ using VRC.SDKBase.Editor.BuildPipeline;
 using VRC.SDKBase.Editor;
 using VRC.Core;
 using OtpNet;
+using Codice.ThemeImages;
 #endif
 
 namespace DecentM.AutoDeploy
@@ -21,6 +22,8 @@ namespace DecentM.AutoDeploy
 
             return totp.ComputeTotp(DateTime.UtcNow);
         }
+
+        #region Authentication
 
         [MenuItem("DecentM/AutoDeploy/Login And Publish")]
         public static void LoginAndRun()
@@ -106,6 +109,16 @@ namespace DecentM.AutoDeploy
             OnPublishUsingCurrentSettings();
         }
 
+        #endregion
+
+        private static EditorWindow GetSdkWindow()
+        {
+            var editorAsm = typeof(VRCSdkControlPanel).Assembly;
+            return EditorWindow.GetWindow(editorAsm.GetType("VRCSdkControlPanel"));
+        }
+
+        #region Building
+
         [MenuItem("DecentM/AutoDeploy/Publish Using Current Login")]
         public static void OnPublishUsingCurrentSettings()
         {
@@ -128,6 +141,8 @@ namespace DecentM.AutoDeploy
                 return;
             }
 
+            // Usually the UI calls this, but we can't go through the UI as it'd necessitate auto-clicking on buttons if that's even possible.
+            // We make sure the build hooks work still, to prevent anything bad from getting uploaded.
             bool buildChecks = VRCBuildPipelineCallbacks.OnVRCSDKBuildRequested(VRCSDKRequestedBuildType.Scene);
 
             if (!buildChecks)
@@ -138,6 +153,18 @@ namespace DecentM.AutoDeploy
 
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
 
+            // Make sure the SDK window is focused. Otherwise the temp scene will be marked as dirty o.O
+            EditorWindow sdkWindow = GetSdkWindow();
+
+            if (sdkWindow == null)
+            {
+                Debug.LogError("The vrc sdk window was not found");
+                return;
+            }
+
+            sdkWindow.Focus();
+
+            // Loosely follow what the SDK UI does to make sure that we comply with its process as much as we can
             EnvConfig.ConfigurePlayerSettings();
             EditorPrefs.SetBool("VRC.SDKBase_StripAllShaders", false);
 
@@ -210,6 +237,8 @@ namespace DecentM.AutoDeploy
 
             GameObject.DestroyImmediate(tmpObject);
         }
+
+        #endregion
 #endif
     }
 }
