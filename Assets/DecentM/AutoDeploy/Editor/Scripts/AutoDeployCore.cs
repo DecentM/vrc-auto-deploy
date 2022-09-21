@@ -24,14 +24,6 @@ namespace DecentM.AutoDeploy
             return totp.ComputeTotp(DateTime.UtcNow);
         }
 
-        public static IEnumerator LoginAndDeployAsync()
-        {
-            LoginAndDeploy();
-
-            while (true)
-                yield return new WaitForSeconds(1);
-        }
-
         public static void LoginAndDeploy()
         {
             if (APIUser.CurrentUser != null)
