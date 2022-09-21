@@ -7,7 +7,6 @@ using VRC.SDKBase.Editor.BuildPipeline;
 using VRC.SDKBase.Editor;
 using VRC.Core;
 using OtpNet;
-using System.Text;
 #endif
 
 namespace DecentM.AutoDeploy
@@ -17,9 +16,10 @@ namespace DecentM.AutoDeploy
 #if UNITY_EDITOR
         private static string GenerateAuthCode(string token)
         {
-            Totp totp = new Totp(Encoding.ASCII.GetBytes(token), totpSize: 4);
+            byte[] secret = Base32Encoding.ToBytes(token.Replace(" ", ""));
+            Totp totp = new Totp(secret, totpSize: 6);
 
-            return totp.ComputeTotp();
+            return totp.ComputeTotp(DateTime.UtcNow);
         }
 
         [MenuItem("DecentM/AutoDeploy/Login And Publish")]
@@ -29,62 +29,80 @@ namespace DecentM.AutoDeploy
                 APIUser.Logout();
 
             AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
+            AuthSettings authSettings = settings.authSettings;
 
-            if (settings.storePlaintextCredentials)
+            if (string.IsNullOrEmpty(authSettings.username) || string.IsNullOrEmpty(authSettings.password))
             {
-                if (!string.IsNullOrEmpty(settings.username) && !string.IsNullOrEmpty(settings.password) && !settings.use2fa)
-                {
-                    APIUser.Login(settings.username, settings.password, OnLoginSuccess, OnLoginError);
-                    return;
-                }
-
-                if (!string.IsNullOrEmpty(settings.username) && !string.IsNullOrEmpty(settings.password) && settings.use2fa && !string.IsNullOrEmpty(settings.otpToken))
-                {
-                    string authCode = GenerateAuthCode(settings.otpToken);
-                    APIUser.VerifyTwoFactorAuthCode(authCode, API2FA.ONE_TIME_PASSWORD_AUTHENTICATION, settings.username, settings.password, OnLoginSuccess, OnLoginError);
-                    return;
-                }
-            }
-
-            string envUsername = Environment.GetEnvironmentVariable("VRC_USERNAME");
-            string envPassword = Environment.GetEnvironmentVariable("VRC_PASSWORD");
-            string envOtpToken = Environment.GetEnvironmentVariable("VRC_OTP_TOKEN");
-
-            if (!string.IsNullOrEmpty(envUsername) && !string.IsNullOrEmpty(envPassword) && !settings.use2fa)
-            {
-                APIUser.Login(envUsername, settings.password, OnLoginSuccess, OnLoginError);
+                Debug.LogError("[DecentM.AutoDeploy] Both username and password must be set to a non-empty value!");
                 return;
             }
 
-            if (!string.IsNullOrEmpty(envUsername) && !string.IsNullOrEmpty(envPassword) && settings.use2fa && !string.IsNullOrEmpty(envOtpToken))
-            {
-                string authCode = GenerateAuthCode(envOtpToken);
-                APIUser.VerifyTwoFactorAuthCode(authCode, API2FA.ONE_TIME_PASSWORD_AUTHENTICATION, envUsername, envUsername, OnLoginSuccess, OnLoginError);
-                return;
-            }
-
-            Debug.LogError("[DecentM.AutoDeploy] Misconfiguration detected. If \"Store Plaintext Credentials\" is checked, you must fill in the username and password fields. If 2FA is on, you must provide the OTP token.");
+            APIUser.Login(authSettings.username, authSettings.password, OnLoginSuccess, OnLoginError, OnTwoFactorRequired);
         }
 
         private static void OnLoginError(ApiModelContainer<APIUser> login)
         {
             Debug.LogError($"Login failed: {login.Error}");
+
+            APIUser.Logout();
         }
 
         private static void OnLoginSuccess(ApiModelContainer<APIUser> login)
         {
-            Debug.Log("Login succeeded!");
+            Debug.Log($"Login succeeded! Auth: {login.Cookies["auth"]}");
+
+            AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
+            AuthSettings authSettings = settings.authSettings;
+
+            APIUser user = login.Model as APIUser;
+
+            if (login.Cookies.ContainsKey("auth"))
+                ApiCredentials.Set(user.username, authSettings.username, "vrchat", login.Cookies["auth"]);
+            else
+                ApiCredentials.SetHumanName(user.username);
+
             OnPublishUsingCurrentSettings();
+        }
+
+        private static void OnTwoFactorRequired(ApiModelContainer<API2FA> login)
+        {
+            Debug.Log("Login requires 2FA");
+
+            AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
+            AuthSettings authSettings = settings.authSettings;
+
+            if (string.IsNullOrEmpty(authSettings.otpToken))
+            {
+                Debug.LogError("[Decentm.AutoDeploy] The configured account has two factor authentication enabled, but there's no OTP token provided. Check the documentation for 2FA setup instructions!");
+                return;
+            }
+
+            API2FA mfa = login.Model as API2FA;
+
+            if (login.Cookies.ContainsKey("auth"))
+                ApiCredentials.Set(authSettings.username, authSettings.username, "vrchat", login.Cookies["auth"]);
+
+            string authCode = GenerateAuthCode(authSettings.otpToken);
+            APIUser.VerifyTwoFactorAuthCode(authCode, API2FA.TIME_BASED_ONE_TIME_PASSWORD_AUTHENTICATION, authSettings.username, authSettings.password, OnLoginSuccess, OnLoginError);
         }
 
         private static void OnLoginError(ApiContainer login)
         {
             Debug.LogError($"2FA Login failed: {login.Error}");
+
+            APIUser.Logout();
         }
 
         private static void OnLoginSuccess(ApiDictContainer login)
         {
             Debug.Log("2FA Login succeeded!");
+
+            AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
+            AuthSettings authSettings = settings.authSettings;
+
+            APIUser user = login.Model as APIUser;
+            ApiCredentials.Set(user.username, authSettings.username, "vrchat", login.Cookies["auth"], login.Cookies["twoFactorAuth"]);
+
             OnPublishUsingCurrentSettings();
         }
 
@@ -95,7 +113,8 @@ namespace DecentM.AutoDeploy
 
             if (APIUser.CurrentUser == null)
             {
-                // TODO: CurrentUser is null if the user is logged in, but isn't looking at the SDK window.
+                // CurrentUser is null if the user is logged in, but isn't looking at the SDK window.
+                // If logged in using the above functions, this should not happen.
 
                 Debug.LogError($"No user found in the SDK. Did authentication fail perhaps?");
                 return;
@@ -135,7 +154,6 @@ namespace DecentM.AutoDeploy
             {
                 // The SDK switched to play mode before starting upload (kinda weird, why not just have all the UI in the inspector?)
                 case PlayModeStateChange.ExitingEditMode:
-                case PlayModeStateChange.EnteredPlayMode:
                     CreateAndAttachRuntimeObject();
                     EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
                     break;

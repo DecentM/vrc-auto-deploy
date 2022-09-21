@@ -10,6 +10,20 @@ using System;
 namespace DecentM.AutoDeploy
 {
 #if UNITY_EDITOR
+    public struct AuthSettings
+    {
+        public AuthSettings(string username, string password, string otpToken)
+        {
+            this.username = username;
+            this.password = password;
+            this.otpToken = otpToken;
+        }
+
+        public string username;
+        public string password;
+        public string otpToken;
+    }
+
     public class AutoDeploySettings : ScriptableObject
     {
         // Auth
@@ -18,6 +32,22 @@ namespace DecentM.AutoDeploy
         public string password = string.Empty;
         public bool use2fa = false;
         public string otpToken = string.Empty;
+
+        public AuthSettings authSettings
+        {
+            get
+            {
+                string envUsername = Environment.GetEnvironmentVariable("VRC_USERNAME");
+                string envPassword = Environment.GetEnvironmentVariable("VRC_PASSWORD");
+                string envOtpToken = Environment.GetEnvironmentVariable("VRC_OTP_TOKEN");
+
+                return new AuthSettings(
+                    string.IsNullOrEmpty(envUsername) ? this.username : envUsername,
+                    string.IsNullOrEmpty(envPassword) ? this.password : envPassword,
+                    string.IsNullOrEmpty(envOtpToken) ? this.otpToken : envOtpToken
+                );
+            }
+        }
 
         // World
         public string worldName = "My World";
@@ -89,7 +119,15 @@ namespace DecentM.AutoDeploy
                         if (settings.use2fa)
                         {
                             EditorGUILayout.PropertyField(settingsObject.FindProperty(nameof(AutoDeploySettings.otpToken)), new GUIContent("2FA Token (OTP only)"));
+                        } else
+                        {
+                            settings.otpToken = string.Empty;
                         }
+                    } else
+                    {
+                        settings.username = string.Empty;
+                        settings.password = string.Empty;
+                        settings.otpToken = string.Empty;
                     }
 
                     EditorGUILayout.Space();

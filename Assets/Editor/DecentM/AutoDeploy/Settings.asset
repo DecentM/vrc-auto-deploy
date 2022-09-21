@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744f11e6464ee3744a5b72e117d9378a, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  storePlaintextCredentials: 1
+  storePlaintextCredentials: 0
   username: 
   password: 
-  use2fa: 1
+  use2fa: 0
   otpToken: 
   worldName: My World
   worldDescription: "Testing uploading worlds using CI\u01C3"
-  worldCapacity: 64
+  worldCapacity: 30
   contentSex: 0
   contentViolence: 0
   contentGore: 0
