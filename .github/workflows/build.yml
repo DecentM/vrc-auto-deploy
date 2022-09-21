@@ -31,7 +31,11 @@ jobs:
         uses: game-ci/unity-builder@v2.0.4
         with:
           unityVersion: 2019.4.31f1
+          buildMethod: DecentM.AutoDeploy.Core.Deploy
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          VRC_USERNAME: ${{ secrets.VRC_USERNAME }}
+          VRC_PASSWORD: ${{ secrets.VRC_PASSWORD }}
+          VRC_OTP_TOKEN: ${{ secrets.VRC_OTP_TOKEN }}
