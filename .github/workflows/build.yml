@@ -35,7 +35,7 @@ jobs:
             echo '{"username":"${{ secrets.VRC_USERNAME }}","password":"${{ secrets.VRC_PASSWORD }}","otpToken":"${{ secrets.VRC_OTP_TOKEN }}"}' > .ignored/auth.json
 
       - name: Create Unity build
-        uses: game-ci/unity-builder@v2.0.4
+        uses: DecentM/unity-builder@7baa3abbb98952b3d6d7c3748f9c2f2027f2933f
         with:
           unityVersion: 2019.4.31f1
           buildMethod: DecentM.AutoDeploy.Core.LoginAndDeploy
