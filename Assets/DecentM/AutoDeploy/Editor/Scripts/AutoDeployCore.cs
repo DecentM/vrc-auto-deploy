@@ -36,7 +36,10 @@ namespace DecentM.AutoDeploy
         public static void LoginAndDeploy()
         {
             if (APIUser.CurrentUser != null)
-                APIUser.Logout();
+            {
+                OnLoginSuccess();
+                return;
+            }
 
             AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
             AuthSettings authSettings = settings.authSettings;
@@ -61,6 +64,18 @@ namespace DecentM.AutoDeploy
 
             APIUser.Logout();
             EditorApplication.Exit(1);
+        }
+
+        private static void OnLoginSuccess()
+        {
+            if (loginState != LoginState.LoggedOut)
+                return;
+
+            loginState = LoginState.LoggedIn;
+
+            Debug.Log($"Login succeeded without user (already logged in)");
+
+            Deploy();
         }
 
         private static void OnLoginSuccess(ApiModelContainer<APIUser> login)
