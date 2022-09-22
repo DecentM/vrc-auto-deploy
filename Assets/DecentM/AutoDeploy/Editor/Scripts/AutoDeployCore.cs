@@ -7,12 +7,19 @@ using OtpNet;
 using VRC.SDKBase.Editor.BuildPipeline;
 using VRC.SDKBase.Editor;
 using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
 using System.Collections;
 #endif
 
 namespace DecentM.AutoDeploy
 {
+    internal enum LoginState
+    {
+        LoggedOut,
+        LoggedIn,
+        Requires2FA,
+        Errored,
+    }
+
     public static class Core
     {
 #if UNITY_EDITOR
@@ -23,6 +30,8 @@ namespace DecentM.AutoDeploy
 
             return totp.ComputeTotp(DateTime.UtcNow);
         }
+
+        private static LoginState loginState = LoginState.LoggedOut;
 
         public static void LoginAndDeploy()
         {
@@ -43,6 +52,11 @@ namespace DecentM.AutoDeploy
 
         private static void OnLoginError(ApiModelContainer<APIUser> login)
         {
+            if (loginState != LoginState.LoggedOut)
+                return;
+
+            loginState = LoginState.Errored;
+
             Debug.LogError($"Login failed. Error code: {login.Code}, Text: {login.Text}, Message: {login.Error}");
 
             APIUser.Logout();
@@ -51,6 +65,11 @@ namespace DecentM.AutoDeploy
 
         private static void OnLoginSuccess(ApiModelContainer<APIUser> login)
         {
+            if (loginState != LoginState.LoggedOut)
+                return;
+
+            loginState = LoginState.LoggedIn;
+
             Debug.Log($"Login succeeded! Auth: {login.Cookies["auth"]}");
 
             AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
@@ -68,6 +87,11 @@ namespace DecentM.AutoDeploy
 
         private static void OnTwoFactorRequired(ApiModelContainer<API2FA> login)
         {
+            if (loginState != LoginState.LoggedOut)
+                return;
+
+            loginState = LoginState.Requires2FA;
+
             Debug.Log("Login requires 2FA");
 
             AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
@@ -90,6 +114,9 @@ namespace DecentM.AutoDeploy
 
         private static void OnLoginError(ApiContainer login)
         {
+            if (loginState != LoginState.Requires2FA)
+                return;
+
             Debug.LogError($"2FA login failed. Error code: {login.Code}, Text: {login.Text}, Message: {login.Error}");
 
             APIUser.Logout();
@@ -98,7 +125,12 @@ namespace DecentM.AutoDeploy
 
         private static void OnLoginSuccess(ApiDictContainer login)
         {
-            Debug.Log("2FA Login succeeded!");
+            if (loginState != LoginState.Requires2FA)
+                return;
+
+            loginState = LoginState.LoggedIn;
+
+            Debug.Log($"2FA Login succeeded! Auth: {login.Cookies["auth"]}");
 
             AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
             AuthSettings authSettings = settings.authSettings;
@@ -152,6 +184,13 @@ namespace DecentM.AutoDeploy
             // Make sure the SDK window is focused. Otherwise the temp scene will be marked as dirty o.O
             FocusSdkWindow();
 
+            EditorCoroutine.Start(DeployCoroutine());
+        }
+
+        public static IEnumerator DeployCoroutine()
+        {
+            yield return new WaitForSeconds(5);
+
             // Usually the UI calls this, but we can't go through the UI as it'd necessitate auto-clicking on buttons if that's even possible.
             // We make sure the build hooks work still, to prevent anything bad from getting uploaded.
             bool buildChecks = VRCBuildPipelineCallbacks.OnVRCSDKBuildRequested(VRCSDKRequestedBuildType.Scene);
@@ -160,7 +199,7 @@ namespace DecentM.AutoDeploy
             {
                 EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
                 EditorUtility.DisplayDialog("Build failed", "At least one build check failed. Investigate the log output above to debug the issue, then build again.", "Ok");
-                return;
+                yield return null;
             }
 
             // Loosely follow what the SDK UI does to make sure that we comply with its process as much as we can
@@ -172,6 +211,8 @@ namespace DecentM.AutoDeploy
 
             VRC_SdkBuilder.PreBuildBehaviourPackaging();
             VRC_SdkBuilder.ExportAndUploadSceneBlueprint();
+
+            yield return null;
         }
 
         private static void OnPlayModeStateChanged(PlayModeStateChange change)
