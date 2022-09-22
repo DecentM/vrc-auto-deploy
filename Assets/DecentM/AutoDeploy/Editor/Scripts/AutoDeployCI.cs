@@ -9,10 +9,8 @@ namespace DecentM.AutoDeploy
 #if UNITY_EDITOR
     public static class CI
     {
-        public static void BuildLoginUpload()
+        public static void Deploy()
         {
-            Core.Build();
-
             Core.Login((LoginState state) =>
             {
                 if (state != LoginState.LoggedIn)
@@ -21,6 +19,7 @@ namespace DecentM.AutoDeploy
                     return;
                 }
 
+                Core.Build();
                 Core.Upload();
             });
         }
