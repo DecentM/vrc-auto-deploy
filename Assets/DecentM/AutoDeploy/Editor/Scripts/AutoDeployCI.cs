@@ -1,7 +1,6 @@
 ﻿#if UNITY_EDITOR
-using UnityEditor;
 using UnityEngine;
-using System;
+using UnityEditor.SceneManagement;
 #endif
 
 namespace DecentM.AutoDeploy
@@ -11,6 +10,8 @@ namespace DecentM.AutoDeploy
     {
         public static void Deploy()
         {
+            EditorSceneManager.OpenScene("Assets/Scenes/MainScene.unity", OpenSceneMode.Single);
+
             Core.Login((LoginState state) =>
             {
                 if (state != LoginState.LoggedIn)

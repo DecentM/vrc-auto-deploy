@@ -7,7 +7,7 @@ using OtpNet;
 using VRC.SDKBase.Editor.BuildPipeline;
 using VRC.SDKBase.Editor;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using UnityEditor.SceneManagement;
 #endif
 
 namespace DecentM.AutoDeploy
