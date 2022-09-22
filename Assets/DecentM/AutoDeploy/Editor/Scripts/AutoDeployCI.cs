@@ -19,7 +19,8 @@ namespace DecentM.AutoDeploy
                     return;
                 }
 
-                Core.BuildAndUpload();
+                Core.Build();
+                Core.Upload();
             });
         }
     }

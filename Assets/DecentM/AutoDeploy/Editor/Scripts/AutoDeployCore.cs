@@ -114,7 +114,7 @@ namespace DecentM.AutoDeploy
 
         private static void OnLoginSuccess(ApiModelContainer<APIUser> login, Action<LoginState> OnFinish)
         {
-            Log($"Login succeeded! Auth: {login.Cookies["auth"]}");
+            Log($"Login succeeded!");
 
             AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
             AuthSettings authSettings = settings.authSettings;
@@ -171,7 +171,7 @@ namespace DecentM.AutoDeploy
 
         private static void OnLoginSuccess(ApiDictContainer login, Action<LoginState> OnFinish)
         {
-            Log($"2FA Login succeeded! Auth: {login.Cookies["auth"]}");
+            Log($"2FA Login succeeded!");
 
             AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
             AuthSettings authSettings = settings.authSettings;
@@ -203,8 +203,10 @@ namespace DecentM.AutoDeploy
             sdkWindow.Focus();
         }
 
-        public static void BuildAndUpload()
+        public static void Build()
         {
+            Log("Building...");
+
             FocusSdkWindow();
             bool buildChecks = VRCBuildPipelineCallbacks.OnVRCSDKBuildRequested(VRCSDKRequestedBuildType.Scene);
 
@@ -219,12 +221,16 @@ namespace DecentM.AutoDeploy
             EditorPrefs.SetBool("VRC.SDKBase_StripAllShaders", false);
 
             VRC_SdkBuilder.shouldBuildUnityPackage = false;
+            AssetExporter.CleanupUnityPackageExport();
             VRC_SdkBuilder.PreBuildBehaviourPackaging();
-            VRC_SdkBuilder.ExportAndUploadSceneBlueprint();
+            VRC_SdkBuilder.ExportSceneResource();
         }
 
-        /* public static void Upload()
+        public static void Upload()
         {
+            Log("Uploading...");
+
+            FocusSdkWindow();
             if (APIUser.CurrentUser == null)
             {
                 // CurrentUser is null if the user is logged in, but isn't looking at the SDK window.
@@ -248,9 +254,9 @@ namespace DecentM.AutoDeploy
             FocusSdkWindow();
 
             EditorPrefs.SetBool("VRC.SDKBase_StripAllShaders", false);
-            VRC_SdkBuilder.shouldBuildUnityPackage = VRCSdkControlPanel.FutureProofPublishEnabled;
+            VRC_SdkBuilder.shouldBuildUnityPackage = false;
             VRC_SdkBuilder.UploadLastExportedSceneBlueprint();
-        } */
+        }
 
         #region Runtime game object
 

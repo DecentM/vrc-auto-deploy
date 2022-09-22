@@ -19,7 +19,8 @@ namespace DecentM.AutoDeploy
                     return;
                 }
 
-                Core.BuildAndUpload();
+                Core.Build();
+                Core.Upload();
             });
         }
 
@@ -38,10 +39,16 @@ namespace DecentM.AutoDeploy
             });
         }
 
-        [MenuItem("DecentM/AutoDeploy/Build And Upload")]
+        [MenuItem("DecentM/AutoDeploy/Build")]
         public static void OnBuild()
         {
-            Core.BuildAndUpload();
+            Core.Build();
+        }
+
+        [MenuItem("DecentM/AutoDeploy/Upload")]
+        public static void OnUpload()
+        {
+            Core.Upload();
         }
 #endif
     }
