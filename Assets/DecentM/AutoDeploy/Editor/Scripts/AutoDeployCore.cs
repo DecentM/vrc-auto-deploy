@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 using System;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using VRC.Core;
@@ -210,13 +211,20 @@ namespace DecentM.AutoDeploy
             Log("Building...");
 
             FocusSdkWindow();
+            EditorCoroutine.Start(BuildCoroutine());
+        }
+
+        private static IEnumerator BuildCoroutine()
+        {
+            yield return new WaitForSeconds(5);
+
             bool buildChecks = VRCBuildPipelineCallbacks.OnVRCSDKBuildRequested(VRCSDKRequestedBuildType.Scene);
 
             if (!buildChecks)
             {
                 EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
                 LogError("At least one build check failed. Investigate the log output above to debug the issue, then build again.");
-                return;
+                yield return null;
             }
 
             EnvConfig.ConfigurePlayerSettings();
@@ -229,6 +237,8 @@ namespace DecentM.AutoDeploy
 
             Log($"currentBuildingAssetBundlePath: {EditorPrefs.GetString("currentBuildingAssetBundlePath")}");
             Log($"lastVRCPath: {EditorPrefs.GetString("lastVRCPath")}");
+
+            yield return null;
         }
 
         public static void Upload()
@@ -258,7 +268,16 @@ namespace DecentM.AutoDeploy
             // Make sure the SDK window is focused. Otherwise the temp scene will be marked as dirty o.O
             FocusSdkWindow();
 
+            EditorCoroutine.Start(UploadCoroutine());
+        }
+
+        private static IEnumerator UploadCoroutine()
+        {
+            yield return new WaitForSeconds(5);
+
             VRC_SdkBuilder.UploadLastExportedSceneBlueprint();
+
+            yield return null;
         }
 
         #region Runtime game object
