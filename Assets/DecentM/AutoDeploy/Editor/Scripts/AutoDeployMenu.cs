@@ -11,8 +11,6 @@ namespace DecentM.AutoDeploy
         [MenuItem("DecentM/AutoDeploy/Login And Publish")]
         public static void OnLoginAndPublish()
         {
-            Core.Build();
-
             Core.Login((LoginState state) =>
             {
                 if (state != LoginState.LoggedIn)
@@ -21,7 +19,7 @@ namespace DecentM.AutoDeploy
                     return;
                 }
 
-                Core.Upload();
+                Core.BuildAndUpload();
             });
         }
 
@@ -40,16 +38,10 @@ namespace DecentM.AutoDeploy
             });
         }
 
-        [MenuItem("DecentM/AutoDeploy/Build")]
+        [MenuItem("DecentM/AutoDeploy/Build And Upload")]
         public static void OnBuild()
         {
-            Core.Build();
-        }
-
-        [MenuItem("DecentM/AutoDeploy/Upload last build")]
-        public static void OnUploadLastBuild()
-        {
-            Core.Upload();
+            Core.BuildAndUpload();
         }
 #endif
     }

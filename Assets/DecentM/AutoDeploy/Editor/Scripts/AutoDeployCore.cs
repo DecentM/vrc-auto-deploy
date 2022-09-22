@@ -203,8 +203,9 @@ namespace DecentM.AutoDeploy
             sdkWindow.Focus();
         }
 
-        public static void Build()
+        public static void BuildAndUpload()
         {
+            FocusSdkWindow();
             bool buildChecks = VRCBuildPipelineCallbacks.OnVRCSDKBuildRequested(VRCSDKRequestedBuildType.Scene);
 
             if (!buildChecks)
@@ -214,10 +215,15 @@ namespace DecentM.AutoDeploy
                 return;
             }
 
-            VRC_SdkBuilder.ExportSceneResource();
+            EnvConfig.ConfigurePlayerSettings();
+            EditorPrefs.SetBool("VRC.SDKBase_StripAllShaders", false);
+
+            VRC_SdkBuilder.shouldBuildUnityPackage = false;
+            VRC_SdkBuilder.PreBuildBehaviourPackaging();
+            VRC_SdkBuilder.ExportAndUploadSceneBlueprint();
         }
 
-        public static void Upload()
+        /* public static void Upload()
         {
             if (APIUser.CurrentUser == null)
             {
@@ -244,7 +250,7 @@ namespace DecentM.AutoDeploy
             EditorPrefs.SetBool("VRC.SDKBase_StripAllShaders", false);
             VRC_SdkBuilder.shouldBuildUnityPackage = VRCSdkControlPanel.FutureProofPublishEnabled;
             VRC_SdkBuilder.UploadLastExportedSceneBlueprint();
-        }
+        } */
 
         #region Runtime game object
 
