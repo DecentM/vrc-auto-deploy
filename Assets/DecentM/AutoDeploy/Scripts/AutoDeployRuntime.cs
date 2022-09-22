@@ -1,9 +1,4 @@
-﻿using System.Timers;
-using UnityEngine;
-
-#if COMPILER_UDONSHARP
-using UdonSharp;
-#endif
+﻿using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
@@ -13,6 +8,7 @@ using VRCSDK2;
 
 namespace DecentM.AutoDeploy
 {
+#if UNITY_EDITOR
     internal enum PipelineReadiness
     {
         NotReady,
@@ -20,13 +16,8 @@ namespace DecentM.AutoDeploy
         Errored,
     }
 
-#if COMPILER_UDONSHARP
-    public class AutoDeployRuntime : UdonSharpBehaviour
-#else
     public class AutoDeployRuntime : MonoBehaviour
-#endif
     {
-#if UNITY_EDITOR
         private const float PrepareTimeoutSeconds = 30f;
         private const float PipelineReadinessDelaySeconds = 0.5f;
 
@@ -167,6 +158,6 @@ namespace DecentM.AutoDeploy
             if (!isSubmitting)
                 SubmitUploadForm();
         }
-#endif
     }
+#endif
 }

@@ -1,13 +1,5 @@
 ﻿#if UNITY_EDITOR
-using System;
 using UnityEditor;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using VRC.SDKBase.Editor.BuildPipeline;
-using VRC.SDKBase.Editor;
-using VRC.Core;
-using OtpNet;
-using Codice.ThemeImages;
 #endif
 
 namespace DecentM.AutoDeploy
