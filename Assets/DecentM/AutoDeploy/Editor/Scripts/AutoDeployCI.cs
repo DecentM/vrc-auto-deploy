@@ -10,6 +10,7 @@ namespace DecentM.AutoDeploy
     {
         public static void Deploy()
         {
+            Debug.Log($"[AutoDeploy CI] Open scene: {EditorSceneManager.GetActiveScene().name}");
             // EditorSceneManager.OpenScene("Assets/Scenes/MainScene.unity", OpenSceneMode.Single);
 
             Core.Login((LoginState state) =>
