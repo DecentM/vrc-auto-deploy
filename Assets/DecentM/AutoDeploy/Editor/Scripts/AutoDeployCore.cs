@@ -46,6 +46,7 @@ namespace DecentM.AutoDeploy
             Debug.LogError($"Login failed: {login.Error}");
 
             APIUser.Logout();
+            EditorApplication.Exit(1);
         }
 
         private static void OnLoginSuccess(ApiModelContainer<APIUser> login)
@@ -92,6 +93,7 @@ namespace DecentM.AutoDeploy
             Debug.LogError($"2FA Login failed: {login.Error}");
 
             APIUser.Logout();
+            EditorApplication.Exit(1);
         }
 
         private static void OnLoginSuccess(ApiDictContainer login)
