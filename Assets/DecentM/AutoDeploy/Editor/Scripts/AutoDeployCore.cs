@@ -12,7 +12,7 @@ using System.Collections;
 
 namespace DecentM.AutoDeploy
 {
-    internal enum LoginState
+    public enum LoginState
     {
         LoggedOut,
         LoggedIn,
@@ -23,6 +23,16 @@ namespace DecentM.AutoDeploy
     public static class Core
     {
 #if UNITY_EDITOR
+        private static void Log(string message)
+        {
+            Debug.Log($"[DecentM.AutoDeploy] {message}");
+        }
+
+        private static void LogError(string message)
+        {
+            Debug.LogError($"[DecentM.AutoDeploy] {message}");
+        }
+
         private static string GenerateAuthCode(string token)
         {
             byte[] secret = Base32Encoding.ToBytes(token.Replace(" ", ""));
@@ -31,13 +41,39 @@ namespace DecentM.AutoDeploy
             return totp.ComputeTotp(DateTime.UtcNow);
         }
 
-        private static LoginState loginState = LoginState.LoggedOut;
+        #region Authentication
 
-        public static void LoginAndDeploy()
+        private const int MAX_LOGIN_TRIES = 3;
+
+        public static void Login(Action<LoginState> OnFinish, int tries = 0)
         {
+            LoginAttempt((LoginState state) =>
+            {
+                if (state == LoginState.LoggedIn)
+                {
+                    OnFinish(state);
+                    return;
+                }
+
+                if (tries > MAX_LOGIN_TRIES)
+                {
+                    LogError($"Failed to log in after {tries + 1} tries. Giving up.");
+                    OnFinish(LoginState.Errored);
+                    return;
+                }
+
+                Login(OnFinish, tries + 1);
+            });
+        }
+
+        private static void LoginAttempt(Action<LoginState> OnFinish)
+        {
+            Log("Logging in...");
+
             if (APIUser.CurrentUser != null)
             {
-                OnLoginSuccess();
+                Log("Already logged in!");
+                OnLoginSuccess(OnFinish);
                 return;
             }
 
@@ -46,46 +82,39 @@ namespace DecentM.AutoDeploy
 
             if (string.IsNullOrEmpty(authSettings.username) || string.IsNullOrEmpty(authSettings.password))
             {
-                Debug.LogError("[DecentM.AutoDeploy] Both username and password must be set to a non-empty value!");
+                LogError("Both username and password must be set to a non-empty value!");
                 return;
             }
 
-            APIUser.Login(authSettings.username, authSettings.password, OnLoginSuccess, OnLoginError, OnTwoFactorRequired);
+            Log("Contacting VRChat servers...");
+
+            APIUser.Login(
+                authSettings.username,
+                authSettings.password,
+                (ApiModelContainer<APIUser> login) => OnLoginSuccess(login, OnFinish),
+                (ApiModelContainer<APIUser> login) => OnLoginError(login, OnFinish),
+                (ApiModelContainer<API2FA> mfa) => OnTwoFactorRequired(mfa, OnFinish)
+            );
         }
 
-        private static void OnLoginError(ApiModelContainer<APIUser> login)
+        private static void OnLoginError(ApiModelContainer<APIUser> login, Action<LoginState> OnFinish)
         {
-            if (loginState != LoginState.LoggedOut)
-                return;
-
-            loginState = LoginState.Errored;
-
-            Debug.LogError($"Login failed. Error code: {login.Code}, Text: {login.Text}, Message: {login.Error}");
+            LogError($"Login failed. Error code: {login.Code}, Text: {login.Text}, Message: {login.Error}");
 
             APIUser.Logout();
-            EditorApplication.Exit(1);
+            OnFinish(LoginState.Errored);
         }
 
-        private static void OnLoginSuccess()
+        private static void OnLoginSuccess(Action<LoginState> OnFinish)
         {
-            if (loginState != LoginState.LoggedOut)
-                return;
+            Log($"Login succeeded without user (already logged in)");
 
-            loginState = LoginState.LoggedIn;
-
-            Debug.Log($"Login succeeded without user (already logged in)");
-
-            Deploy();
+            OnFinish(LoginState.LoggedIn);
         }
 
-        private static void OnLoginSuccess(ApiModelContainer<APIUser> login)
+        private static void OnLoginSuccess(ApiModelContainer<APIUser> login, Action<LoginState> OnFinish)
         {
-            if (loginState != LoginState.LoggedOut)
-                return;
-
-            loginState = LoginState.LoggedIn;
-
-            Debug.Log($"Login succeeded! Auth: {login.Cookies["auth"]}");
+            Log($"Login succeeded! Auth: {login.Cookies["auth"]}");
 
             AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
             AuthSettings authSettings = settings.authSettings;
@@ -97,24 +126,19 @@ namespace DecentM.AutoDeploy
             else
                 ApiCredentials.SetHumanName(user.username);
 
-            Deploy();
+            OnFinish(LoginState.LoggedIn);
         }
 
-        private static void OnTwoFactorRequired(ApiModelContainer<API2FA> login)
+        private static void OnTwoFactorRequired(ApiModelContainer<API2FA> login, Action<LoginState> OnFinish)
         {
-            if (loginState != LoginState.LoggedOut)
-                return;
-
-            loginState = LoginState.Requires2FA;
-
-            Debug.Log("Login requires 2FA");
+            Log("Login requires 2FA");
 
             AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
             AuthSettings authSettings = settings.authSettings;
 
             if (string.IsNullOrEmpty(authSettings.otpToken))
             {
-                Debug.LogError("[Decentm.AutoDeploy] The configured account has two factor authentication enabled, but there's no OTP token provided. Check the documentation for 2FA setup instructions!");
+                LogError("The configured account has two factor authentication enabled, but there's no OTP token provided. Check the documentation for 2FA setup instructions!");
                 return;
             }
 
@@ -124,28 +148,30 @@ namespace DecentM.AutoDeploy
                 ApiCredentials.Set(authSettings.username, authSettings.username, "vrchat", login.Cookies["auth"]);
 
             string authCode = GenerateAuthCode(authSettings.otpToken);
-            APIUser.VerifyTwoFactorAuthCode(authCode, API2FA.TIME_BASED_ONE_TIME_PASSWORD_AUTHENTICATION, authSettings.username, authSettings.password, OnLoginSuccess, OnLoginError);
+
+            Log("Contacting VRChat servers...");
+
+            APIUser.VerifyTwoFactorAuthCode(
+                authCode,
+                API2FA.TIME_BASED_ONE_TIME_PASSWORD_AUTHENTICATION,
+                authSettings.username,
+                authSettings.password,
+                (ApiDictContainer response) => OnLoginSuccess(response, OnFinish),
+                (ApiContainer response) => OnLoginError(response, OnFinish)
+            );
         }
 
-        private static void OnLoginError(ApiContainer login)
+        private static void OnLoginError(ApiContainer login, Action<LoginState> OnFinish)
         {
-            if (loginState != LoginState.Requires2FA)
-                return;
-
-            Debug.LogError($"2FA login failed. Error code: {login.Code}, Text: {login.Text}, Message: {login.Error}");
+            LogError($"2FA login failed. Error code: {login.Code}, Text: {login.Text}, Message: {login.Error}");
 
             APIUser.Logout();
-            EditorApplication.Exit(1);
+            OnFinish(LoginState.Errored);
         }
 
-        private static void OnLoginSuccess(ApiDictContainer login)
+        private static void OnLoginSuccess(ApiDictContainer login, Action<LoginState> OnFinish)
         {
-            if (loginState != LoginState.Requires2FA)
-                return;
-
-            loginState = LoginState.LoggedIn;
-
-            Debug.Log($"2FA Login succeeded! Auth: {login.Cookies["auth"]}");
+            Log($"2FA Login succeeded! Auth: {login.Cookies["auth"]}");
 
             AutoDeploySettings settings = AutoDeploySettings.GetOrCreate();
             AuthSettings authSettings = settings.authSettings;
@@ -153,8 +179,10 @@ namespace DecentM.AutoDeploy
             APIUser user = login.Model as APIUser;
             ApiCredentials.Set(user.username, authSettings.username, "vrchat", login.Cookies["auth"], login.Cookies["twoFactorAuth"]);
 
-            Deploy();
+            OnFinish(LoginState.LoggedIn);
         }
+
+        #endregion
 
         private static EditorWindow GetSdkWindow()
         {
@@ -168,21 +196,35 @@ namespace DecentM.AutoDeploy
 
             if (sdkWindow == null)
             {
-                Debug.LogError("The vrc sdk window was not found");
+                LogError("The vrc sdk window was not found");
                 return;
             }
 
             sdkWindow.Focus();
         }
 
-        public static void Deploy()
+        public static void Build()
+        {
+            bool buildChecks = VRCBuildPipelineCallbacks.OnVRCSDKBuildRequested(VRCSDKRequestedBuildType.Scene);
+
+            if (!buildChecks)
+            {
+                EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+                LogError("At least one build check failed. Investigate the log output above to debug the issue, then build again.");
+                return;
+            }
+
+            VRC_SdkBuilder.ExportSceneResource();
+        }
+
+        public static void Upload()
         {
             if (APIUser.CurrentUser == null)
             {
                 // CurrentUser is null if the user is logged in, but isn't looking at the SDK window.
                 // If logged in using the above functions, this should not happen.
 
-                Debug.LogError($"No user found in the SDK. Did authentication fail perhaps?");
+                LogError($"No user found in the SDK. Did authentication fail perhaps?");
                 return;
             }
 
@@ -190,7 +232,7 @@ namespace DecentM.AutoDeploy
 
             if (!hasPermission)
             {
-                Debug.LogError("The currently logged in user does not have permission to upload worlds.");
+                LogError("The currently logged in user does not have permission to upload worlds.");
                 return;
             }
 
@@ -199,36 +241,12 @@ namespace DecentM.AutoDeploy
             // Make sure the SDK window is focused. Otherwise the temp scene will be marked as dirty o.O
             FocusSdkWindow();
 
-            EditorCoroutine.Start(DeployCoroutine());
-        }
-
-        public static IEnumerator DeployCoroutine()
-        {
-            yield return new WaitForSeconds(5);
-
-            // Usually the UI calls this, but we can't go through the UI as it'd necessitate auto-clicking on buttons if that's even possible.
-            // We make sure the build hooks work still, to prevent anything bad from getting uploaded.
-            bool buildChecks = VRCBuildPipelineCallbacks.OnVRCSDKBuildRequested(VRCSDKRequestedBuildType.Scene);
-
-            if (!buildChecks)
-            {
-                EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
-                EditorUtility.DisplayDialog("Build failed", "At least one build check failed. Investigate the log output above to debug the issue, then build again.", "Ok");
-                yield return null;
-            }
-
-            // Loosely follow what the SDK UI does to make sure that we comply with its process as much as we can
-            EnvConfig.ConfigurePlayerSettings();
             EditorPrefs.SetBool("VRC.SDKBase_StripAllShaders", false);
-
-            // "shouldBuildUnityPackage" is called future proof publishing in the SDK UI
-            VRC_SdkBuilder.shouldBuildUnityPackage = false;
-
-            VRC_SdkBuilder.PreBuildBehaviourPackaging();
-            VRC_SdkBuilder.ExportAndUploadSceneBlueprint();
-
-            yield return null;
+            VRC_SdkBuilder.shouldBuildUnityPackage = VRCSdkControlPanel.FutureProofPublishEnabled;
+            VRC_SdkBuilder.UploadLastExportedSceneBlueprint();
         }
+
+        #region Runtime game object
 
         private static void OnPlayModeStateChanged(PlayModeStateChange change)
         {
@@ -293,6 +311,8 @@ namespace DecentM.AutoDeploy
 
             GameObject.DestroyImmediate(tmpObject);
         }
-#endif
+
+        #endregion
+#endif // #if UNITY_EDITOR
     }
 }
