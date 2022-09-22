@@ -43,7 +43,7 @@ namespace DecentM.AutoDeploy
 
         private static void OnLoginError(ApiModelContainer<APIUser> login)
         {
-            Debug.LogError($"Login failed: {login.Error}");
+            Debug.LogError($"Login failed. Error code: {login.Code}, Text: {login.Text}, Message: {login.Error}");
 
             APIUser.Logout();
             EditorApplication.Exit(1);
@@ -90,7 +90,7 @@ namespace DecentM.AutoDeploy
 
         private static void OnLoginError(ApiContainer login)
         {
-            Debug.LogError($"2FA Login failed: {login.Error}");
+            Debug.LogError($"2FA login failed. Error code: {login.Code}, Text: {login.Text}, Message: {login.Error}");
 
             APIUser.Logout();
             EditorApplication.Exit(1);
@@ -147,20 +147,21 @@ namespace DecentM.AutoDeploy
                 return;
             }
 
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+
+            // Make sure the SDK window is focused. Otherwise the temp scene will be marked as dirty o.O
+            FocusSdkWindow();
+
             // Usually the UI calls this, but we can't go through the UI as it'd necessitate auto-clicking on buttons if that's even possible.
             // We make sure the build hooks work still, to prevent anything bad from getting uploaded.
             bool buildChecks = VRCBuildPipelineCallbacks.OnVRCSDKBuildRequested(VRCSDKRequestedBuildType.Scene);
 
             if (!buildChecks)
             {
+                EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
                 EditorUtility.DisplayDialog("Build failed", "At least one build check failed. Investigate the log output above to debug the issue, then build again.", "Ok");
                 return;
             }
-
-            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-
-            // Make sure the SDK window is focused. Otherwise the temp scene will be marked as dirty o.O
-            FocusSdkWindow();
 
             // Loosely follow what the SDK UI does to make sure that we comply with its process as much as we can
             EnvConfig.ConfigurePlayerSettings();
@@ -177,7 +178,8 @@ namespace DecentM.AutoDeploy
         {
             switch (change)
             {
-                // The SDK switched to play mode before starting upload (kinda weird, why not just have all the UI in the inspector?)
+                // The SDK switches to play mode before starting upload (kinda weird, why not just have all the UI in the inspector?)
+                case PlayModeStateChange.EnteredPlayMode:
                 case PlayModeStateChange.ExitingEditMode:
                     CreateAndAttachRuntimeObject();
                     EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
