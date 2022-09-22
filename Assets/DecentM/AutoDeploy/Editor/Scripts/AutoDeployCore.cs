@@ -8,6 +8,8 @@ using VRC.SDKBase.Editor.BuildPipeline;
 using VRC.SDKBase.Editor;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
+using VRC.SDK3.Editor;
+using VRC.SDK3.Editor.Builder;
 #endif
 
 namespace DecentM.AutoDeploy
@@ -220,10 +222,13 @@ namespace DecentM.AutoDeploy
             EnvConfig.ConfigurePlayerSettings();
             EditorPrefs.SetBool("VRC.SDKBase_StripAllShaders", false);
 
+            // I think "shouldBuildUnityPackage" is gonna be the "Future Proof Publishing" option in the UI
             VRC_SdkBuilder.shouldBuildUnityPackage = false;
-            AssetExporter.CleanupUnityPackageExport();
             VRC_SdkBuilder.PreBuildBehaviourPackaging();
             VRC_SdkBuilder.ExportSceneResource();
+
+            Log($"currentBuildingAssetBundlePath: {EditorPrefs.GetString("currentBuildingAssetBundlePath")}");
+            Log($"lastVRCPath: {EditorPrefs.GetString("lastVRCPath")}");
         }
 
         public static void Upload()
@@ -253,8 +258,6 @@ namespace DecentM.AutoDeploy
             // Make sure the SDK window is focused. Otherwise the temp scene will be marked as dirty o.O
             FocusSdkWindow();
 
-            EditorPrefs.SetBool("VRC.SDKBase_StripAllShaders", false);
-            VRC_SdkBuilder.shouldBuildUnityPackage = false;
             VRC_SdkBuilder.UploadLastExportedSceneBlueprint();
         }
 

@@ -50,6 +50,12 @@ namespace DecentM.AutoDeploy
         {
             Core.Upload();
         }
+
+        [MenuItem("DecentM/AutoDeploy/Debug")]
+        public static void OnDebug()
+        {
+            Debug.Log(EditorPrefs.GetString("lastVRCPath"));
+        }
 #endif
     }
 }
