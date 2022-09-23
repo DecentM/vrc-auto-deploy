@@ -13,6 +13,7 @@ using JetBrains.Annotations;
 using UnityEditor.SceneManagement;
 using VRC.SDK3.Editor;
 using VRC.SDK3.Editor.Builder;
+using VRC.SDK3.Components;
 #endif
 
 namespace DecentM.AutoDeploy
@@ -262,14 +263,20 @@ namespace DecentM.AutoDeploy
                 yield return null;
             }
 
+            /* VRCWorldAssetExporter.FindDynamicContent(vrcsceneDescriptor);
+            vrcsceneDescriptor.gravity = Physics.gravity;
+            vrcsceneDescriptor.layerCollisionArr = UpdateLayers.GetLayerCollisionArray();
+            vrcsceneDescriptor.unityVersion = Application.unityVersion; */
+
             EnvConfig.ConfigurePlayerSettings();
             EditorPrefs.SetBool("VRC.SDKBase_StripAllShaders", false);
 
             // I think "shouldBuildUnityPackage" is gonna be the "Future Proof Publishing" option in the UI
             VRC_SdkBuilder.shouldBuildUnityPackage = false;
             VRC_SdkBuilder.PreBuildBehaviourPackaging();
+            VRC_SdkBuilder.ExportSceneResource();
 
-            AssetBundleBuild build = new AssetBundleBuild();
+            /* AssetBundleBuild build = new AssetBundleBuild();
             build.assetNames = new string[] { "Assets/Scenes/MainScene.unity" };
             build.assetBundleName = "scene.vrcw";
 
@@ -281,9 +288,9 @@ namespace DecentM.AutoDeploy
 
             AssetExporter.DoPreExportShaderReplacement();
             AssetDatabase.RemoveUnusedAssetBundleNames();
-            BuildPipeline.BuildAssetBundles(outputDir, new AssetBundleBuild[] { build }, BuildAssetBundleOptions.ForceRebuildAssetBundle, EditorUserBuildSettings.activeBuildTarget);
+            BuildPipeline.BuildAssetBundles(outputDir, new AssetBundleBuild[] { build }, BuildAssetBundleOptions.ForceRebuildAssetBundle, EditorUserBuildSettings.activeBuildTarget); */
 
-            EditorPrefs.SetString("lastVRCPath", outputPath);
+            EditorPrefs.SetString("lastVRCPath", EditorPrefs.GetString("lastVRCPath").ToLower());
 
             OnFinish(true);
             yield return null;
