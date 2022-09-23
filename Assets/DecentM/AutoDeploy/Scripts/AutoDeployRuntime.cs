@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
@@ -16,6 +17,7 @@ namespace DecentM.AutoDeploy
         Errored,
     }
 
+    [ExecuteInEditMode]
     public class AutoDeployRuntime : MonoBehaviour
     {
         private const float PrepareTimeoutSeconds = 30f;
@@ -140,6 +142,9 @@ namespace DecentM.AutoDeploy
 
         void Update()
         {
+            if (!EditorApplication.isPlaying)
+                return;
+
             if (!IsSDKPrepared())
             {
                 this.elapsed += Time.deltaTime;

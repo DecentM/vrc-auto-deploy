@@ -8,6 +8,7 @@ using OtpNet;
 using VRC.SDKBase.Editor.BuildPipeline;
 using VRC.SDKBase.Editor;
 using UnityEngine.SceneManagement;
+using JetBrains.Annotations;
 using UnityEditor.SceneManagement;
 using VRC.SDK3.Editor;
 using VRC.SDK3.Editor.Builder;
@@ -48,6 +49,7 @@ namespace DecentM.AutoDeploy
 
         private const int MAX_LOGIN_TRIES = 3;
 
+        [PublicAPI]
         public static void Login(Action<LoginState> OnFinish, int tries = 0)
         {
             LoginAttempt((LoginState state) =>
@@ -206,6 +208,7 @@ namespace DecentM.AutoDeploy
             sdkWindow.Focus();
         }
 
+        [PublicAPI]
         public static void Build()
         {
             Log("Building...");

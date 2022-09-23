@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor.SceneManagement;
+using UnityEditor;
 #endif
 
 namespace DecentM.AutoDeploy
@@ -10,14 +11,16 @@ namespace DecentM.AutoDeploy
     {
         public static void Deploy()
         {
+            EditorSceneManager.OpenScene("Assets/Scenes/MainScene.unity", OpenSceneMode.Single);
+
             Debug.Log($"[AutoDeploy CI] Open scene: {EditorSceneManager.GetActiveScene().name}");
-            // EditorSceneManager.OpenScene("Assets/Scenes/MainScene.unity", OpenSceneMode.Single);
 
             Core.Login((LoginState state) =>
             {
                 if (state != LoginState.LoggedIn)
                 {
                     Debug.LogError($"Login failed, after retries.");
+                    EditorApplication.Exit(1);
                     return;
                 }
 
