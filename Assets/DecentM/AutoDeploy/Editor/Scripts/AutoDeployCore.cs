@@ -390,13 +390,6 @@ namespace DecentM.AutoDeploy
             }
         }
 
-        private static bool isCI = false;
-
-        public static void SetCI()
-        {
-            isCI = true;
-        }
-
         private static void CreateAndAttachRuntimeObject()
         {
             if (tmpObject != null)
@@ -409,10 +402,7 @@ namespace DecentM.AutoDeploy
 
             obj.name = "AutoDeployRuntime";
 
-            AutoDeployRuntime runtime = obj.AddComponent<AutoDeployRuntime>();
-
-            if (isCI)
-                runtime.SetCI();
+            obj.AddComponent<AutoDeployRuntime>();
         }
 
         private static void CleanRuntimeObject()

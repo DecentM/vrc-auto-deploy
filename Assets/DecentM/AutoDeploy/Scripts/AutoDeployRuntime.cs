@@ -142,13 +142,6 @@ namespace DecentM.AutoDeploy
 
         private float elapsed = 0;
 
-        private bool isCI = false;
-
-        public void SetCI()
-        {
-            this.isCI = true;
-        }
-
         void Update()
         {
             if (!IsSDKPrepared() && !isSubmitting)
@@ -185,7 +178,7 @@ namespace DecentM.AutoDeploy
         {
             // Whew, we're done!
             // Now we just need to close the editor if we're running in a CI
-            if (this.isCI)
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
             {
                 EditorApplication.Exit(success ? 0 : 1);
                 return;

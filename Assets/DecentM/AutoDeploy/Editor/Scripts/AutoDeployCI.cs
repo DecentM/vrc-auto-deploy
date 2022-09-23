@@ -13,8 +13,6 @@ namespace DecentM.AutoDeploy
         {
             EditorSceneManager.OpenScene("Assets/Scenes/MainScene.unity", OpenSceneMode.Single);
 
-            Core.SetCI();
-
             Core.Login((LoginState state) =>
             {
                 if (state != LoginState.LoggedIn)
