@@ -141,7 +141,12 @@ namespace DecentM.AutoDeploy
 
         private float elapsed = 0;
 
-        private Action UploadCallback;
+        private bool isCI = false;
+
+        public void SetCI()
+        {
+            this.isCI = true;
+        }
 
         void Update()
         {
@@ -173,8 +178,12 @@ namespace DecentM.AutoDeploy
 
             // Whew, we're done!
             // Now we just need to close the editor if we're running in a CI
-            if (Environment.OSVersion.Platform == PlatformID.Unix)
+            if (this.isCI)
                 EditorApplication.Exit(0);
+            // The editor script created us just before switching to play mode to build, so
+            // we remove ourselves here to not litter the hierarchy.
+            else
+                DestroyImmediate(this.gameObject);
         }
     }
 

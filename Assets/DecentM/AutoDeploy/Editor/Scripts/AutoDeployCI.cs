@@ -13,8 +13,6 @@ namespace DecentM.AutoDeploy
         {
             EditorSceneManager.OpenScene("Assets/Scenes/MainScene.unity", OpenSceneMode.Single);
 
-            Debug.Log($"[AutoDeploy CI] Open scene: {EditorSceneManager.GetActiveScene().name}");
-
             Core.Login((LoginState state) =>
             {
                 if (state != LoginState.LoggedIn)
@@ -32,6 +30,7 @@ namespace DecentM.AutoDeploy
                         return;
                     }
 
+                    Core.SetCI();
                     Core.Upload();
                 });
             });

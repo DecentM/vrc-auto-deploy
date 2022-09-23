@@ -15,7 +15,7 @@ namespace DecentM.AutoDeploy
             {
                 if (state != LoginState.LoggedIn)
                 {
-                    Debug.LogError($"Login failed, login state ended as {state}");
+                    EditorUtility.DisplayDialog("DecentM.AutoDeploy", $"Login failed, login state ended as {state}", "Ok");
                     return;
                 }
 
@@ -23,7 +23,7 @@ namespace DecentM.AutoDeploy
                 {
                     if (!success)
                     {
-                        Debug.LogError($"Build failed, check log output above to diagnose your issue!");
+                        EditorUtility.DisplayDialog("DecentM.AutoDeploy", $"Build failed, check log output above to diagnose your issue!", "Ok");
                         return;
                     }
 
@@ -39,7 +39,7 @@ namespace DecentM.AutoDeploy
             {
                 if (state != LoginState.LoggedIn)
                 {
-                    Debug.LogError($"Login failed, login state ended as {state}");
+                    EditorUtility.DisplayDialog("DecentM.AutoDeploy", $"Login failed, login state ended as {state}", "Ok");
                     return;
                 }
 
@@ -54,7 +54,7 @@ namespace DecentM.AutoDeploy
             {
                 if (!success)
                 {
-                    Debug.LogError($"Build failed, check log output above to diagnose your issue!");
+                    EditorUtility.DisplayDialog("DecentM.AutoDeploy", $"Build failed, check log output above to diagnose your issue!", "Ok");
                     return;
                 }
 
@@ -66,12 +66,6 @@ namespace DecentM.AutoDeploy
         public static void OnUpload()
         {
             Core.Upload();
-        }
-
-        [MenuItem("DecentM/AutoDeploy/Debug")]
-        public static void OnDebug()
-        {
-            Debug.Log(EditorPrefs.GetString("lastVRCPath"));
         }
 #endif
     }

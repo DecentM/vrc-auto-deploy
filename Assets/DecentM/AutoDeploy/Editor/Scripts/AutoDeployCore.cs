@@ -390,18 +390,29 @@ namespace DecentM.AutoDeploy
             }
         }
 
+        private static bool isCI = false;
+
+        public static void SetCI()
+        {
+            isCI = true;
+        }
+
         private static void CreateAndAttachRuntimeObject()
         {
             if (tmpObject != null)
                 CleanRuntimeObject();
 
             GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            AutoDeployRuntime runtime = obj.AddComponent<AutoDeployRuntime>();
             Component.DestroyImmediate(obj.GetComponent<MeshRenderer>());
             Component.DestroyImmediate(obj.GetComponent<BoxCollider>());
             Component.DestroyImmediate(obj.GetComponent<MeshFilter>());
 
             obj.name = "AutoDeployRuntime";
+
+            AutoDeployRuntime runtime = obj.AddComponent<AutoDeployRuntime>();
+
+            if (isCI)
+                runtime.SetCI();
         }
 
         private static void CleanRuntimeObject()
