@@ -252,6 +252,8 @@ namespace DecentM.AutoDeploy
         {
             yield return new WaitForSeconds(5);
 
+            // This will also run UdonSharp compilation, etc...
+
             bool buildChecks = VRCBuildPipelineCallbacks.OnVRCSDKBuildRequested(VRCSDKRequestedBuildType.Scene);
 
             if (!buildChecks)
@@ -262,6 +264,8 @@ namespace DecentM.AutoDeploy
                 yield return null;
             }
 
+            // Using SDK functions, create a programmatic build
+
             EnvConfig.ConfigurePlayerSettings();
             EditorPrefs.SetBool("VRC.SDKBase_StripAllShaders", false);
 
@@ -269,6 +273,8 @@ namespace DecentM.AutoDeploy
             VRC_SdkBuilder.shouldBuildUnityPackage = false;
             VRC_SdkBuilder.PreBuildBehaviourPackaging();
 
+            // Not sure why, but the upload fails because the SDK can't find the file that it builds,
+            // so we use Unity to build the scene.
             AssetBundleBuild build = new AssetBundleBuild();
             build.assetNames = new string[] { "Assets/Scenes/MainScene.unity" };
             build.assetBundleName = "scene.vrcw";
@@ -282,6 +288,8 @@ namespace DecentM.AutoDeploy
             AssetExporter.DoPreExportShaderReplacement();
             AssetDatabase.RemoveUnusedAssetBundleNames();
 
+            // The SDK checks if the blueprint id in the scene matches the world we're uploading,
+            // so we need to bake that ID here
             PipelineManager[] managers = UnityEngine.Object.FindObjectsOfType<PipelineManager>();
 
             if (managers.Length != 1)
@@ -293,7 +301,10 @@ namespace DecentM.AutoDeploy
             PipelineManager pipelineManager = managers[0];
             pipelineManager.contentType = PipelineManager.ContentType.world;
 
-            // Assign the blueprint ID if it hasn't been assigned yet
+            // Assign the blueprint ID if the pipeline manager has no blueprint
+            // (means this is the first upload of the world)
+            // TODO: Figure out if we even want to support creating worlds through this
+            //       script, or if we just want to support updating them.
             if (string.IsNullOrEmpty(pipelineManager.blueprintId))
                 pipelineManager.AssignId();
 
@@ -304,6 +315,7 @@ namespace DecentM.AutoDeploy
 
             BuildPipeline.BuildAssetBundles(outputDir, new AssetBundleBuild[] { build }, BuildAssetBundleOptions.ForceRebuildAssetBundle, EditorUserBuildSettings.activeBuildTarget);
 
+            // The SDK will read this variable during upload
             EditorPrefs.SetString("lastVRCPath", outputPath);
 
             OnFinish(true);
@@ -344,6 +356,8 @@ namespace DecentM.AutoDeploy
         {
             yield return new WaitForSeconds(5);
 
+            // This will start play mode and bring up the upload form. From there on, AutoDeployRuntime
+            // takes over.
             VRC_SdkBuilder.UploadLastExportedSceneBlueprint();
 
             yield return null;
