@@ -193,7 +193,7 @@ namespace DecentM.AutoDeploy
 
             // The editor script created us just before switching to play mode to build, so
             // we remove ourselves here to not litter the hierarchy.
-            EditorUtility.DisplayDialog("DecentM.AutoDeploy", "Build finished successfully!", "Ok");
+            EditorUtility.DisplayDialog("DecentM.AutoDeploy", success ? "Build finished successfully!" : "Upload failed", "Ok");
             DestroyImmediate(this.gameObject);
         }
     }

@@ -34,10 +34,15 @@ namespace DecentM.AutoDeploy
         public bool use2fa = false;
         public string otpToken = string.Empty;
 
+        private AuthSettings? _authSettings = null;
+
         public AuthSettings authSettings
         {
             get
             {
+                if (_authSettings != null)
+                    return (AuthSettings)_authSettings;
+
                 string path = Path.Combine(Application.dataPath, "..", ".ignored", "auth.json");
                 Debug.Log($"[DecentM.AutoDeploy] Looking for auth file at {path}");
 
@@ -47,7 +52,8 @@ namespace DecentM.AutoDeploy
 
                     try
                     {
-                        return JsonConvert.DeserializeObject<AuthSettings>(File.ReadAllText(path));
+                        _authSettings = JsonConvert.DeserializeObject<AuthSettings>(File.ReadAllText(path));
+                        return (AuthSettings)_authSettings;
                     } catch (Exception e)
                     {
                         Debug.LogError("[DecentM.AutoDeploy] Could not read auth data, falling back to project values");
