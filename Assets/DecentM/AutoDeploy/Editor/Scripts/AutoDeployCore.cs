@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR
 using System;
 using System.Collections;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using VRC.Core;
@@ -256,8 +257,17 @@ namespace DecentM.AutoDeploy
             VRC_SdkBuilder.PreBuildBehaviourPackaging();
             VRC_SdkBuilder.ExportSceneResource();
 
+            string lastVRCPath = EditorPrefs.GetString("lastVRCPath");
+
             Log($"currentBuildingAssetBundlePath: {EditorPrefs.GetString("currentBuildingAssetBundlePath")}");
-            Log($"lastVRCPath: {EditorPrefs.GetString("lastVRCPath")}");
+            Log($"lastVRCPath: {lastVRCPath}");
+            
+            if (!File.Exists(lastVRCPath))
+            {
+                LogError($"File does not exist at lastVRCPath: {lastVRCPath}");
+                OnFinish(false);
+                yield return null;
+            }
 
             OnFinish(true);
             yield return null;
