@@ -11,8 +11,6 @@ using VRC.SDKBase.Editor;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
 using UnityEditor.SceneManagement;
-using VRC.SDK3.Editor;
-using VRC.SDK3.Editor.Builder;
 #endif
 
 namespace DecentM.AutoDeploy
