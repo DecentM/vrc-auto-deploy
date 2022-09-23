@@ -281,7 +281,7 @@ namespace DecentM.AutoDeploy
 
             AssetExporter.DoPreExportShaderReplacement();
             AssetDatabase.RemoveUnusedAssetBundleNames();
-            BuildPipeline.BuildAssetBundles(outputPath, new AssetBundleBuild[] { build }, BuildAssetBundleOptions.ForceRebuildAssetBundle, EditorUserBuildSettings.activeBuildTarget);
+            BuildPipeline.BuildAssetBundles(outputDir, new AssetBundleBuild[] { build }, BuildAssetBundleOptions.ForceRebuildAssetBundle, EditorUserBuildSettings.activeBuildTarget);
 
             EditorPrefs.SetString("lastVRCPath", outputPath);
 
