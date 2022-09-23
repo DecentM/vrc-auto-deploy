@@ -235,6 +235,19 @@ namespace DecentM.AutoDeploy
             runtime.BuildAndUpload();
         }
 
+        private static void DirSearch(string sDir)
+        {
+            foreach (string d in Directory.GetDirectories(sDir))
+            {
+                foreach (string f in Directory.GetFiles(d))
+                {
+                    Log(f);
+                }
+
+                DirSearch(d);
+            }
+        }
+
         private static IEnumerator BuildCoroutine(Action<bool> OnFinish)
         {
             yield return new WaitForSeconds(5);
@@ -260,6 +273,8 @@ namespace DecentM.AutoDeploy
             string lastVRCPath = EditorPrefs.GetString("lastVRCPath");
 
             Log($"Waiting for file to appear at {lastVRCPath}...");
+
+            DirSearch(Application.temporaryCachePath);
 
             while (!File.Exists(lastVRCPath))
                 yield return new WaitForSeconds(1);
