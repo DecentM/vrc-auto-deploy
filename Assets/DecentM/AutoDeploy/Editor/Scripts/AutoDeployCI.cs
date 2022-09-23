@@ -27,6 +27,7 @@ namespace DecentM.AutoDeploy
                     if (!success)
                     {
                         Debug.LogError($"Build failed, check log output above to diagnose your issue!");
+                        EditorApplication.Exit(1);
                         return;
                     }
 

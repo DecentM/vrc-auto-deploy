@@ -1,8 +1,7 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using UnityEditor;
 using UnityEngine;
-
-#if UNITY_EDITOR
 using UnityEngine.SceneManagement;
 using VRC.Core;
 using VRCSDK2;
