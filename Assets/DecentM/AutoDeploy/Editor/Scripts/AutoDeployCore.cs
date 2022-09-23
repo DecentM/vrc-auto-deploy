@@ -268,19 +268,18 @@ namespace DecentM.AutoDeploy
             // I think "shouldBuildUnityPackage" is gonna be the "Future Proof Publishing" option in the UI
             VRC_SdkBuilder.shouldBuildUnityPackage = false;
             VRC_SdkBuilder.PreBuildBehaviourPackaging();
-            VRC_SdkBuilder.ExportSceneResource();
 
-            string lastVRCPath = EditorPrefs.GetString("lastVRCPath");
+            AssetBundleBuild build = new AssetBundleBuild();
+            build.assetNames = new string[] { "Assets/Scenes/MainScene.unity" };
+            build.assetBundleName = "scene-StandaloneWindows64-MainScene.vrcw";
 
-            Log($"Waiting for file to appear at {lastVRCPath}...");
+            string outputPath = $"BuiltScenes/{build.assetBundleName}";
 
-            DirSearch(Application.temporaryCachePath);
-            DirSearch(".");
+            AssetExporter.DoPreExportShaderReplacement();
+            AssetDatabase.RemoveUnusedAssetBundleNames();
+            BuildPipeline.BuildAssetBundles(outputPath, new AssetBundleBuild[] { build }, BuildAssetBundleOptions.ForceRebuildAssetBundle, EditorUserBuildSettings.activeBuildTarget);
 
-            while (!File.Exists(lastVRCPath))
-                yield return new WaitForSeconds(1);
-
-            Log($"File appeared!");
+            EditorPrefs.SetString("lastVRCPath", outputPath);
 
             OnFinish(true);
             yield return null;

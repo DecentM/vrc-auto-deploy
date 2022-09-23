@@ -19,7 +19,6 @@ namespace DecentM.AutoDeploy
                     return;
                 }
 
-                // Core.BuildWithRuntime();
                 Core.Build((bool success) =>
                 {
                     if (!success)
@@ -30,7 +29,6 @@ namespace DecentM.AutoDeploy
 
                     Core.Upload();
                 });
-                // Core.Upload();
             });
         }
 
