@@ -275,6 +275,7 @@ namespace DecentM.AutoDeploy
             Log($"Waiting for file to appear at {lastVRCPath}...");
 
             DirSearch(Application.temporaryCachePath);
+            DirSearch(".");
 
             while (!File.Exists(lastVRCPath))
                 yield return new WaitForSeconds(1);
