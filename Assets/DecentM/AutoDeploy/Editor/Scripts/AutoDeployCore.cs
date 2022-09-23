@@ -271,7 +271,7 @@ namespace DecentM.AutoDeploy
 
             AssetBundleBuild build = new AssetBundleBuild();
             build.assetNames = new string[] { "Assets/Scenes/MainScene.unity" };
-            build.assetBundleName = "scene-StandaloneWindows64-MainScene.vrcw";
+            build.assetBundleName = "scene.vrcw";
 
             string outputDir = "BuiltScenes";
             string outputPath = $"{outputDir}/{build.assetBundleName}";
