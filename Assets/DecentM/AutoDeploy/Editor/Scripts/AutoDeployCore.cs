@@ -273,7 +273,11 @@ namespace DecentM.AutoDeploy
             build.assetNames = new string[] { "Assets/Scenes/MainScene.unity" };
             build.assetBundleName = "scene-StandaloneWindows64-MainScene.vrcw";
 
-            string outputPath = $"BuiltScenes/{build.assetBundleName}";
+            string outputDir = "BuiltScenes";
+            string outputPath = $"{outputDir}/{build.assetBundleName}";
+
+            if (!Directory.Exists(outputDir))
+                Directory.CreateDirectory(outputDir);
 
             AssetExporter.DoPreExportShaderReplacement();
             AssetDatabase.RemoveUnusedAssetBundleNames();
