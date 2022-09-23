@@ -1,4 +1,4 @@
-name: build
+name: deploy-world
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  auto-deploy:
+  deploy-world:
     runs-on: ubuntu-latest
 
     defaults:
@@ -35,6 +35,7 @@ jobs:
             echo '{"username":"${{ secrets.VRC_USERNAME }}","password":"${{ secrets.VRC_PASSWORD }}","otpToken":"${{ secrets.VRC_OTP_TOKEN }}"}' > .ignored/auth.json
 
       - name: Create Unity build
+        # TODO: Replace this with Unity Builder v3 when it comes out, and s configure it to not quit
         uses: DecentM/unity-builder@7baa3abbb98952b3d6d7c3748f9c2f2027f2933f
         with:
           unityVersion: 2019.4.31f1

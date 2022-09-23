@@ -1,4 +1,4 @@
-name: build
+name: build-package
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  auto-deploy:
+  build-package:
     runs-on: ubuntu-latest
 
     defaults:
@@ -40,7 +40,7 @@ jobs:
       - name: Upload built unitypackage
         uses: actions/upload-artifact@v2
         with:
-          name: Unitypackage
+          name: DecentM.AutoDeploy.unitypackage
           path: PackageExporter/DecentM.AutoDeploy.unitypackage
 
       - name: Create release
