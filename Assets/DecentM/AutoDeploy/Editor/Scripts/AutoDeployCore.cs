@@ -209,15 +209,32 @@ namespace DecentM.AutoDeploy
         }
 
         [PublicAPI]
-        public static void Build()
+        public static void Build(Action<bool> OnFinish)
         {
             Log("Building...");
 
             FocusSdkWindow();
-            EditorCoroutine.Start(BuildCoroutine());
+            EditorCoroutine.Start(BuildCoroutine(OnFinish));
         }
 
-        private static IEnumerator BuildCoroutine()
+        public static void BuildWithRuntime()
+        {
+            Log("Building with runtime...");
+
+            FocusSdkWindow();
+
+            if (tmpObject == null)
+                return;
+
+            AutoDeployRuntime runtime = tmpObject.GetComponent<AutoDeployRuntime>();
+
+            if (runtime == null)
+                return;
+
+            runtime.BuildAndUpload();
+        }
+
+        private static IEnumerator BuildCoroutine(Action<bool> OnFinish)
         {
             yield return new WaitForSeconds(5);
 
@@ -227,6 +244,7 @@ namespace DecentM.AutoDeploy
             {
                 EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
                 LogError("At least one build check failed. Investigate the log output above to debug the issue, then build again.");
+                OnFinish(false);
                 yield return null;
             }
 
@@ -241,6 +259,7 @@ namespace DecentM.AutoDeploy
             Log($"currentBuildingAssetBundlePath: {EditorPrefs.GetString("currentBuildingAssetBundlePath")}");
             Log($"lastVRCPath: {EditorPrefs.GetString("lastVRCPath")}");
 
+            OnFinish(true);
             yield return null;
         }
 

@@ -24,8 +24,16 @@ namespace DecentM.AutoDeploy
                     return;
                 }
 
-                Core.Build();
-                Core.Upload();
+                Core.Build((bool success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError($"Build failed, check log output above to diagnose your issue!");
+                        return;
+                    }
+
+                    Core.Upload();
+                });
             });
         }
     }

@@ -19,8 +19,18 @@ namespace DecentM.AutoDeploy
                     return;
                 }
 
-                Core.Build();
-                Core.Upload();
+                // Core.BuildWithRuntime();
+                Core.Build((bool success) =>
+                {
+                    if (!success)
+                    {
+                        Debug.LogError($"Build failed, check log output above to diagnose your issue!");
+                        return;
+                    }
+
+                    Core.Upload();
+                });
+                // Core.Upload();
             });
         }
 
@@ -42,7 +52,16 @@ namespace DecentM.AutoDeploy
         [MenuItem("DecentM/AutoDeploy/Build")]
         public static void OnBuild()
         {
-            Core.Build();
+            Core.Build((bool success) =>
+            {
+                if (!success)
+                {
+                    Debug.LogError($"Build failed, check log output above to diagnose your issue!");
+                    return;
+                }
+
+                Debug.Log("Build successful!");
+            });
         }
 
         [MenuItem("DecentM/AutoDeploy/Upload")]

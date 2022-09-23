@@ -1,15 +1,17 @@
 {
-    "name": "DecentM.AutoDeploy.Editor",
+    "name": "AutoDeployNonEditorScripts",
     "references": [
-        "GUID:c2558e6f3a1baff48b0e3b53bbbcd31e",
-        "GUID:6e9c6119ac4eb334284fb7b4bc6d1f05"
+        "VRC.SDK3",
+        "VRC.SDK3.Editor",
+        "VRC.SDKBase",
+        "VRC.SDKBase.Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [
-        ""
+        "Otp.NET.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],
