@@ -259,15 +259,12 @@ namespace DecentM.AutoDeploy
 
             string lastVRCPath = EditorPrefs.GetString("lastVRCPath");
 
-            Log($"currentBuildingAssetBundlePath: {EditorPrefs.GetString("currentBuildingAssetBundlePath")}");
-            Log($"lastVRCPath: {lastVRCPath}");
-            
-            if (!File.Exists(lastVRCPath))
-            {
-                LogError($"File does not exist at lastVRCPath: {lastVRCPath}");
-                OnFinish(false);
-                yield return null;
-            }
+            Log($"Waiting for file to appear at {lastVRCPath}...");
+
+            while (!File.Exists(lastVRCPath))
+                yield return new WaitForSeconds(1);
+
+            Log($"File appeared!");
 
             OnFinish(true);
             yield return null;
