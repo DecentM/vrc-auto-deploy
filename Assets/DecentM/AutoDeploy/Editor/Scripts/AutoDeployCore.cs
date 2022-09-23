@@ -218,23 +218,6 @@ namespace DecentM.AutoDeploy
             EditorCoroutine.Start(BuildCoroutine(OnFinish));
         }
 
-        public static void BuildWithRuntime()
-        {
-            Log("Building with runtime...");
-
-            FocusSdkWindow();
-
-            if (tmpObject == null)
-                return;
-
-            AutoDeployRuntime runtime = tmpObject.GetComponent<AutoDeployRuntime>();
-
-            if (runtime == null)
-                return;
-
-            runtime.BuildAndUpload();
-        }
-
         private static void DirSearch(string sDir)
         {
             foreach (string d in Directory.GetDirectories(sDir))
@@ -413,7 +396,7 @@ namespace DecentM.AutoDeploy
                 CleanRuntimeObject();
 
             GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            obj.AddComponent<AutoDeployRuntime>();
+            AutoDeployRuntime runtime = obj.AddComponent<AutoDeployRuntime>();
             Component.DestroyImmediate(obj.GetComponent<MeshRenderer>());
             Component.DestroyImmediate(obj.GetComponent<BoxCollider>());
             Component.DestroyImmediate(obj.GetComponent<MeshFilter>());

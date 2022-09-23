@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -17,7 +18,7 @@ namespace DecentM.AutoDeploy
         Errored,
     }
 
-    // [ExecuteInEditMode]
+    [ExecuteInEditMode]
     public class AutoDeployRuntime : MonoBehaviour
     {
         private const float PrepareTimeoutSeconds = 30f;
@@ -140,14 +141,11 @@ namespace DecentM.AutoDeploy
 
         private float elapsed = 0;
 
+        private Action UploadCallback;
+
         void Update()
         {
-            // UpdateBuildController();
-
-            /* if (!EditorApplication.isPlaying)
-                return; */
-
-            if (!IsSDKPrepared())
+            if (!IsSDKPrepared() && !isSubmitting)
             {
                 this.elapsed += Time.deltaTime;
 
@@ -163,118 +161,20 @@ namespace DecentM.AutoDeploy
             }
 
             if (!isSubmitting)
+            {
                 SubmitUploadForm();
-        }
-
-        private bool shouldBuild = false;
-
-        [SerializeField]
-        [HideInInspector]
-        private BuildStage buildStage = BuildStage.BeforeBegin;
-
-        public void BuildAndUpload()
-        {
-            this.buildStage = BuildStage.BeforeBegin;
-            this.shouldBuild = true;
-        }
-
-        private void UpdateBuildController()
-        {
-            if (!this.shouldBuild)
                 return;
-
-            switch (this.buildStage)
-            {
-                case BuildStage.BeforeBegin:
-                    this.UpdateBeforeBegin();
-                    return;
-
-                case BuildStage.Building:
-                    this.UpdateBuilding();
-                    return;
-
-                case BuildStage.WaitingForBuild:
-                    this.UpdateWaitingForBuild();
-                    return;
-
-                case BuildStage.Uploading:
-                    this.UpdateUploading();
-                    return;
-
-                case BuildStage.WaitingForUpload:
-                    this.UpdateWaitingForUpload();
-                    return;
-
-                case BuildStage.Done:
-                    this.UpdateDone();
-                    return;
-
-                default:
-                    Debug.LogError($"Unexpected state: {this.buildStage}");
-                    this.shouldBuild = false;
-                    this.buildStage = BuildStage.BeforeBegin;
-                    return;
             }
-        }
 
-        private void UpdateBeforeBegin()
-        {
-            // set "shouldBuild" to true to kick off building
-            if (!this.shouldBuild)
-                return;
-
-            this.buildStage = BuildStage.Building;
-            Debug.Log("[DecentM.AutoDeploy.Runtime] Building");
-        }
-        
-        private void UpdateBuilding()
-        {
-            Core.Build((bool success) =>
-            {
-                if (!success)
-                {
-                    Debug.LogError($"Build failed, check log output above to diagnose your issue!");
-                    this.buildStage = BuildStage.Done;
-                    this.shouldBuild = false;
-                    return;
-                }
-
-                this.buildStage = BuildStage.WaitingForBuild;
-                Debug.Log("[DecentM.AutoDeploy.Runtime] Waiting for build");
-            });
-        }
-
-        private void UpdateWaitingForBuild()
-        {
-            // "lastVRCPath" gets set after building, and it contains the path to the
-            // build vrcw file.
-            if (string.IsNullOrEmpty(EditorPrefs.GetString("lastVRCPath")))
-                return;
-
-            this.buildStage = BuildStage.Uploading;
-            Debug.Log("[DecentM.AutoDeploy.Runtime] Uploading");
-        }
-
-        private void UpdateUploading()
-        {
-            Core.Upload();
-
-            this.buildStage = BuildStage.WaitingForUpload;
-            Debug.Log("[DecentM.AutoDeploy.Runtime] Waiting for upload");
-        }
-
-        private void UpdateWaitingForUpload()
-        {
             if (EditorApplication.isPlaying)
                 return;
 
-            this.buildStage = BuildStage.Done;
-            Debug.Log("[DecentM.AutoDeploy.Runtime] Upload done");
-        }
+            isSubmitting = false;
 
-        private void UpdateDone()
-        {
-            this.shouldBuild = false;
+            // Whew, we're done!
+            // Now we just need to close the editor if we're running in a CI
+            if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("CI")))
+                EditorApplication.Exit(0);
         }
     }
 
