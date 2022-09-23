@@ -126,6 +126,7 @@ namespace DecentM.AutoDeploy
                 case PipelineReadiness.Errored:
                     Debug.LogError("[DecentM.AutoDeploy] VRChat SDK pipeline errored, cannot continue building.");
                     this.enabled = false;
+                    this.Finish(false);
                     return false;
 
                 case PipelineReadiness.NotReady:
@@ -159,6 +160,7 @@ namespace DecentM.AutoDeploy
                     this.elapsed = 0;
                     Debug.LogError($"[DecentM.AutoDeploy] The SDK could not prepare in {PrepareTimeoutSeconds} seconds, timeout.");
                     this.enabled = false;
+                    this.Finish(false);
                     return;
                 }
 
@@ -176,14 +178,23 @@ namespace DecentM.AutoDeploy
 
             isSubmitting = false;
 
+            this.Finish(true);
+        }
+
+        private void Finish(bool success)
+        {
             // Whew, we're done!
             // Now we just need to close the editor if we're running in a CI
             if (this.isCI)
-                EditorApplication.Exit(0);
+            {
+                EditorApplication.Exit(success ? 0 : 1);
+                return;
+            }
+
             // The editor script created us just before switching to play mode to build, so
             // we remove ourselves here to not litter the hierarchy.
-            else
-                DestroyImmediate(this.gameObject);
+            EditorUtility.DisplayDialog("DecentM.AutoDeploy", "Build finished successfully!", "Ok");
+            DestroyImmediate(this.gameObject);
         }
     }
 
