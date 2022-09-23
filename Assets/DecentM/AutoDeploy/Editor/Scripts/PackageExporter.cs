@@ -1,10 +1,13 @@
-﻿using System.IO;
+﻿#if UNITY_EDITOR
+using System.IO;
 using UnityEditor;
+#endif
 
 namespace DecentM.AutoDeploy
 {
     public static class PackageExporter
     {
+#if UNITY_EDITOR
         public static void ExportPackage(string name, string[] paths)
         {
             string output = $"PackageExporter/{name}.unitypackage";
@@ -20,5 +23,6 @@ namespace DecentM.AutoDeploy
                 ExportPackageOptions.Recurse
             );
         }
+#endif
     }
 }
