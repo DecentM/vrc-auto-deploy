@@ -173,7 +173,7 @@ namespace DecentM.AutoDeploy
 
             // Whew, we're done!
             // Now we just need to close the editor if we're running in a CI
-            if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("CI")))
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
                 EditorApplication.Exit(0);
         }
     }
