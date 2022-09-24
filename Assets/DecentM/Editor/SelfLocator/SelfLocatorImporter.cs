@@ -1,8 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEditor.Experimental.AssetImporters;
 using System.IO;
-
-using DecentM.Icons;
 
 namespace DecentM.EditorTools.SelfLocator
 {
@@ -17,8 +16,7 @@ namespace DecentM.EditorTools.SelfLocator
                 TextAsset errorAsset = new TextAsset("");
                 ctx.AddObjectToAsset(
                     Path.GetFileName(ctx.assetPath),
-                    errorAsset,
-                    MaterialIcons.GetIcon(Icon.Close)
+                    errorAsset
                 );
                 ctx.SetMainObject(errorAsset);
                 return;

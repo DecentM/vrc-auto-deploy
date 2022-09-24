@@ -6,8 +6,6 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-using DecentM.EditorTools;
-
 namespace DecentM.EditorTools.SelfLocator
 {
     public class SelfLocatingException : Exception
