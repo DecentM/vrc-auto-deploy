@@ -18,7 +18,7 @@ namespace DecentM.EditorTools
         }
         public static Sprite FallbackVideoThumbnail
         {
-            get { return GetAsset<Sprite>(VideoTexturesPath, "thumbnail-missing.psd"); }
+            get { return GetAsset<Sprite>(VideoTexturesPath, "thumbnail-missing.jpg"); }
         }
 
         public static string YtDlpPath
