@@ -1,14 +1,31 @@
-﻿using UdonSharp;
+﻿using UnityEngine;
+using UdonSharp;
 using TMPro;
 
 public class NewsItemRenderer : UdonSharpBehaviour
 {
-    public TextMeshProUGUI titleSlot;
-    public TextMeshProUGUI dateSlot;
-    public TextMeshProUGUI keywordsSlot;
-    public TextMeshProUGUI contentSlot;
-    public TextMeshProUGUI teaserSlot;
-    public TextMeshProUGUI sourceSlot;
+    public Animator animator;
+
+    private bool isExpanded
+    {
+        get { return this.animator.GetBool("IsExpanded"); }
+        set { this.animator.SetBool("IsExpanded", value); }
+    }
+
+    public TextMeshProUGUI[] titleSlot;
+    public TextMeshProUGUI[] dateSlot;
+    public TextMeshProUGUI[] keywordsSlot;
+    public TextMeshProUGUI[] contentSlot;
+    public TextMeshProUGUI[] teaserSlot;
+    public TextMeshProUGUI[] sourceSlot;
+
+    private void SetSlot(TextMeshProUGUI[] slots, string value)
+    {
+        foreach (TextMeshProUGUI slot in slots)
+        {
+            slot.text = value;
+        }
+    }
 
     public void SetData(
         string title,
@@ -19,21 +36,36 @@ public class NewsItemRenderer : UdonSharpBehaviour
         string source
     )
     {
-        this.titleSlot.text = title;
-        this.dateSlot.text = date;
-        this.keywordsSlot.text = string.Join(", ", keywords);
-        this.contentSlot.text = content;
-        this.teaserSlot.text = teaser;
-        this.sourceSlot.text = source;
+        this.SetSlot(this.titleSlot, title);
+        this.SetSlot(this.dateSlot, date);
+        this.SetSlot(this.keywordsSlot, string.Join(", ", keywords));
+        this.SetSlot(this.contentSlot, content);
+        this.SetSlot(this.teaserSlot, teaser);
+        this.SetSlot(this.sourceSlot, source);
     }
 
     public void SetData(NewsItem item)
     {
-        this.titleSlot.text = item.title;
-        this.dateSlot.text = item.date;
-        this.keywordsSlot.text = string.Join(", ", item.keywords);
-        this.contentSlot.text = item.content;
-        this.teaserSlot.text = item.teaser;
-        this.sourceSlot.text = item.source;
+        this.SetSlot(this.titleSlot, item.title);
+        this.SetSlot(this.dateSlot, item.date);
+        this.SetSlot(this.keywordsSlot, string.Join(", ", item.keywords));
+        this.SetSlot(this.contentSlot, item.content);
+        this.SetSlot(this.teaserSlot, item.teaser);
+        this.SetSlot(this.sourceSlot, item.source);
+    }
+
+    public void SetState(bool expanded)
+    {
+        this.isExpanded = expanded;
+    }
+
+    public void OnReadMore()
+    {
+        this.SetState(true);
+    }
+
+    public void OnReadLess()
+    {
+        this.SetState(false);
     }
 }
