@@ -1,0 +1,1399 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!382020655 &-852315747415121847
+PluginBuildInfo:
+  m_RuntimePlugins:
+  - Unity.Burst.Unsafe
+  - VRC.SDK3.Dynamics.PhysBone
+  - OVRPlugin
+  - WatsonTcp
+  - System.Threading.Tasks.Extensions
+  - VRC.Udon.ClientBindings
+  - openvr_api
+  - portmidi
+  - VRC.Udon.VRCWrapperModules
+  - Otp.NET
+  - VRCSDK3
+  - VRC.Udon.VM
+  - nunit.framework
+  - librsync.net
+  - VRC.Udon.Common
+  - VRC.SDK3.Dynamics.Contact
+  - Collections.Pooled
+  - System.Collections.Immutable
+  - System.Numerics.Vectors
+  - System.Buffers
+  - VRC.Dynamics
+  - VRC.Udon.Wrapper
+  - VRC.Udon.Security
+  - clipper_library
+  - VRC.Collections
+  - VRCSDKBase
+  - System.Runtime.CompilerServices.Unsafe
+  - libopenvr_api
+  - Blake2Sharp
+  - System.Memory
+  - System.Text.Encoding.CodePages
+  - VRCCore-Editor
+  - VRC.Utility
+  - AudioPluginOculusSpatializer
+  m_EditorPlugins:
+  - VRCSDK3-Editor
+  - Microsoft.CodeAnalysis
+  - VRC.Udon.VRCTypeResolverModules
+  - AppleEventIntegration
+  - liblz4Plastic
+  - Unity.Plastic.Newtonsoft.Json
+  - unityplastic
+  - VRC.Udon.Compiler
+  - System.Reflection.Metadata
+  - Microsoft.CodeAnalysis.CSharp
+  - VRC.Udon.UAssembly
+  - VRC.Udon.Graph
+  - Newtonsoft.Json
+  - UnityEditor.VR
+  - 0Harmony
+  - VRC.SDK3.Dynamics.PhysBone.Editor
+  - VRCSDKBase-Editor
+  - VRC.SDK3.Dynamics.Contact.Editor
+  - VRC.Udon.VRCGraphModules
+  - log4netPlastic
+  - VRC.Udon.EditorBindings
+  - zlib64Plastic
+  - Unity.Plastic.Antlr3.Runtime
+  - lz4x64Plastic
+--- !u!1125 &1
+BuildReport:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LastBuild
+  m_Summary:
+    buildStartTime:
+      serializedVersion: 2
+      ticks: 637996836742171406
+    buildGUID: 00000000000000000000000000000000
+    platformName: Win64
+    platformGroupName: Standalone
+    options: 16
+    assetBundleOptions: 32
+    outputPath: C:/Users/DecentM/AppData/Local/Temp/DefaultCompany/AutoDeploy/scene-standalonewindows64-mainscene.vrcw
+    crc: 1912367430
+    totalSize: 85128621
+    totalTimeTicks: 0
+    totalErrors: 0
+    totalWarnings: 0
+    buildType: 1
+    buildResult: 1
+  m_Files:
+  - path: D:/UnityProjects/VRChat/AutoDeploy/scene-standalonewindows64-mainscene.vrcw/BuildPlayer-MainScene
+    role: Scene
+    id: 0
+    totalSize: 6480280
+  - path: D:/UnityProjects/VRChat/AutoDeploy/scene-standalonewindows64-mainscene.vrcw/BuildPlayer-MainScene.sharedAssets
+    role: SharedAssets
+    id: 1
+    totalSize: 225049352
+  - path: D:/UnityProjects/VRChat/AutoDeploy/scene-standalonewindows64-mainscene.vrcw/BuildPlayer-MainScene.resource
+    role: StreamingResourceFile
+    id: 2
+    totalSize: 58016
+  - path: D:/UnityProjects/VRChat/AutoDeploy/scene-standalonewindows64-mainscene.vrcw
+    role: AssetBundle
+    id: 3
+    totalSize: 85124633
+  - path: D:/UnityProjects/VRChat/AutoDeploy/scene-standalonewindows64-mainscene.vrcw.manifest
+    role: AssetBundleTextManifest
+    id: 4
+    totalSize: 2767
+  - path: D:/UnityProjects/VRChat/AutoDeploy/AutoDeploy/CAB-9c661e3ff82a5813101a7fcdacb98ac3
+    role: ResourcesFile
+    id: 5
+    totalSize: 4308
+  - path: D:/UnityProjects/VRChat/AutoDeploy/AutoDeploy
+    role: ManifestAssetBundle
+    id: 6
+    totalSize: 1053
+  - path: D:/UnityProjects/VRChat/AutoDeploy/AutoDeploy.manifest
+    role: AssetBundleTextManifest
+    id: 7
+    totalSize: 168
+  m_BuildSteps:
+  - stepName: Build Asset Bundles
+    durationTicks: 494348153
+    depth: 0
+    messages: []
+  - stepName: Calculate asset bundles to be built
+    durationTicks: 62194
+    depth: 1
+    messages: []
+  - stepName: Compile scripts
+    durationTicks: 32134901
+    depth: 1
+    messages: []
+  - stepName: Build player
+    durationTicks: 417648040
+    depth: 1
+    messages: []
+  - stepName: Prepare assets for target platform
+    durationTicks: 14276210
+    depth: 2
+    messages: []
+  - stepName: Building scenes
+    durationTicks: 18209695
+    depth: 2
+    messages: []
+  - stepName: Building scene Assets/Scenes/MainScene.unity
+    durationTicks: 18196223
+    depth: 3
+    messages: []
+  - stepName: Writing asset files
+    durationTicks: 54992091
+    depth: 2
+    messages: []
+  - stepName: Packaging assets - archive:/BuildPlayer-MainScene/BuildPlayer-MainScene.sharedAssets
+    durationTicks: 54953259
+    depth: 3
+    messages: []
+  - stepName: Creating compressed player package
+    durationTicks: 317563794
+    depth: 2
+    messages: []
+  - stepName: Postprocess built player
+    durationTicks: 402042
+    depth: 2
+    messages: []
+  m_Appendices:
+  - {fileID: 6093895649408872681}
+  - {fileID: 4122400894316670041}
+  - {fileID: 8680868107873010755}
+  - {fileID: -852315747415121847}
+  - {fileID: 4974661453746434319}
+  - {fileID: 7858281036969811044}
+--- !u!1126 &4122400894316670041
+PackedAssets:
+  m_File: 1
+  m_ShortPath: BuildPlayer-MainScene.sharedAssets
+  m_Overhead: 115847
+  m_Contents:
+  - fileID: 1
+    classID: 150
+    packedSize: 61
+    offset: 116936
+    sourceAssetGUID: 00000000000000000000000000000000
+    buildTimeAssetPath: 
+  - fileID: 2
+    classID: 142
+    packedSize: 156
+    offset: 117000
+    sourceAssetGUID: 00000000000000000000000000000000
+    buildTimeAssetPath: 
+  - fileID: 3
+    classID: 21
+    packedSize: 904
+    offset: 117160
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 4
+    classID: 21
+    packedSize: 904
+    offset: 118064
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 5
+    classID: 21
+    packedSize: 908
+    offset: 118968
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 6
+    classID: 21
+    packedSize: 896
+    offset: 119880
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 7
+    classID: 21
+    packedSize: 1052
+    offset: 120776
+    sourceAssetGUID: 0000000000000000f000000000000000
+    buildTimeAssetPath: Resources/unity_builtin_extra
+  - fileID: 8
+    classID: 21
+    packedSize: 1620
+    offset: 121832
+    sourceAssetGUID: 0b045fec2d99c7e4cb7059b63aa665fc
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Materials/VideoScreen.mat
+  - fileID: 9
+    classID: 21
+    packedSize: 4984
+    offset: 123456
+    sourceAssetGUID: 703745f75560124488d90b7ffe522f57
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Materials/Chair set/Chair set
+      T2.mat
+  - fileID: 10
+    classID: 21
+    packedSize: 4944
+    offset: 128440
+    sourceAssetGUID: b1cc28be108c49a4bb62461e67a3bc75
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Materials/Chair set/Chair set.mat
+  - fileID: 11
+    classID: 21
+    packedSize: 4988
+    offset: 133384
+    sourceAssetGUID: f6837370f10850c46bb877c0d661f044
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Materials/Interactables and
+      Doors/Server, Control, Security panel/Control Panel.mat
+  - fileID: 12
+    classID: 21
+    packedSize: 5060
+    offset: 138376
+    sourceAssetGUID: 8ed645f2d98f080459db6026fdd92246
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Materials/Lights/White Light.mat
+  - fileID: 13
+    classID: 21
+    packedSize: 4828
+    offset: 143440
+    sourceAssetGUID: a457eeed7158dbe4199e5cc71f4f9b35
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Materials/Table Texture Set/Crates.mat
+  - fileID: 14
+    classID: 21
+    packedSize: 4828
+    offset: 148272
+    sourceAssetGUID: 5b7f23233a988d04a9e57a1c1bfbacbb
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Materials/Table Texture Set/Shelf.mat
+  - fileID: 15
+    classID: 21
+    packedSize: 4992
+    offset: 153104
+    sourceAssetGUID: 0c0054d31d795964680d627bcf2e3097
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Materials/Table Texture Set/Table
+      Texture Set 1.mat
+  - fileID: 16
+    classID: 21
+    packedSize: 4988
+    offset: 158096
+    sourceAssetGUID: 1ac16eaf410f8614dbbc5093e2ea56fc
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Materials/Techware/Keyboard
+      props.mat
+  - fileID: 17
+    classID: 21
+    packedSize: 4980
+    offset: 163088
+    sourceAssetGUID: 5666f87358c9a75449f82ea12d7deef4
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Materials/Techware/Techware.mat
+  - fileID: 18
+    classID: 21
+    packedSize: 1468
+    offset: 168072
+    sourceAssetGUID: 6571b8495753dde4191bbb6b6d98b849
+    buildTimeAssetPath: Assets/World/Materials/Brushed Steel/Brushed Steel.mat
+  - fileID: 19
+    classID: 21
+    packedSize: 1460
+    offset: 169544
+    sourceAssetGUID: 8a6f0f7e359b2134190df4a3ff332a92
+    buildTimeAssetPath: Assets/World/Materials/Carpet/Carpet.mat
+  - fileID: 20
+    classID: 21
+    packedSize: 1460
+    offset: 171008
+    sourceAssetGUID: b83e064ba60f3a940a7675b2fb471728
+    buildTimeAssetPath: Assets/World/Materials/Concrete/Concrete.mat
+  - fileID: 21
+    classID: 21
+    packedSize: 892
+    offset: 172472
+    sourceAssetGUID: 174921ceb65a35f41bffaa15172d6beb
+    buildTimeAssetPath: Assets/World/Materials/HologramScreen/HologramScreen.mat
+  - fileID: 22
+    classID: 21
+    packedSize: 1520
+    offset: 173368
+    sourceAssetGUID: 4566c7d6391731b4ebfa73c17495ae1c
+    buildTimeAssetPath: Assets/World/Materials/Sanded Glass/SandedGlass.mat
+  - fileID: 23
+    classID: 21
+    packedSize: 1472
+    offset: 174888
+    sourceAssetGUID: 9de18a593f5c367479604a3148a9bbbe
+    buildTimeAssetPath: Assets/World/Materials/Sanded Glass/SandedGlassOpaque.mat
+  - fileID: 24
+    classID: 21
+    packedSize: 1500
+    offset: 176360
+    sourceAssetGUID: 1f6489512e2e80943b293121724dc8f4
+    buildTimeAssetPath: Assets/World/Materials/Sanded Glass/Window.mat
+  - fileID: 25
+    classID: 21
+    packedSize: 16140
+    offset: 177864
+    sourceAssetGUID: 3553fdff09c22724caed76950c0e8afc
+    buildTimeAssetPath: Assets/World/Materials/Ticker.mat
+  - fileID: 26
+    classID: 21
+    packedSize: 1488
+    offset: 194008
+    sourceAssetGUID: e8906ef120b3d5e40a9b8c28f83f5816
+    buildTimeAssetPath: Assets/World/Materials/Wood/WindowWood.mat
+  - fileID: 27
+    classID: 21
+    packedSize: 1480
+    offset: 195496
+    sourceAssetGUID: dfeda8b197af52d428f1941643cb4df1
+    buildTimeAssetPath: Assets/World/Materials/Wood/Wood.mat
+  - fileID: 28
+    classID: 21
+    packedSize: 172
+    offset: 196976
+    sourceAssetGUID: 6a567f623810a8d4db9e7452d6f1c76f
+    buildTimeAssetPath: Assets/World/Materials/shanghai_bund_2k.mat
+  - fileID: 29
+    classID: 21
+    packedSize: 944
+    offset: 197152
+    sourceAssetGUID: 8f586378b4e144a9851e7b34d9b748ee
+    buildTimeAssetPath: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans
+      SDF.asset
+  - fileID: 30
+    classID: 21
+    packedSize: 952
+    offset: 198096
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 31
+    classID: 21
+    packedSize: 888
+    offset: 199048
+    sourceAssetGUID: 4d7a1f2d72196e24bb9a9eefb40859c3
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Office Interior/Tables/Table
+      Set 1.FBX
+  - fileID: 32
+    classID: 21
+    packedSize: 888
+    offset: 199936
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 33
+    classID: 28
+    packedSize: 156
+    offset: 200824
+    sourceAssetGUID: 149af406a08a8864fa0e47aaae3e78ff
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Textures/black-swatch.psd
+  - fileID: 34
+    classID: 28
+    packedSize: 2796332
+    offset: 200984
+    sourceAssetGUID: 14e271c775069244ab12ea91a81671e3
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Set Glass/Table Glass_Diffuse.png
+  - fileID: 35
+    classID: 28
+    packedSize: 1398252
+    offset: 2997320
+    sourceAssetGUID: 15e503e492ff8d04f999d0cdea5e03f8
+    buildTimeAssetPath: Assets/World/Materials/Sanded Glass/sanded glass_diffuseOriginal.png
+  - fileID: 36
+    classID: 28
+    packedSize: 2796340
+    offset: 4395576
+    sourceAssetGUID: 184a1cc931650344f8f7b56ba8c40b4b
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Diffuse.png
+  - fileID: 37
+    classID: 28
+    packedSize: 349668
+    offset: 7191920
+    sourceAssetGUID: 189bfefcda834d344bdec77161bf193d
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Props/shelf_1001_Normal.tga
+  - fileID: 38
+    classID: 28
+    packedSize: 1398244
+    offset: 7541592
+    sourceAssetGUID: 1bc6d7870f3a91046bb2b0614b905e20
+    buildTimeAssetPath: Assets/Scenes/MainScene/Lightmap-2_comp_dir.png
+  - fileID: 39
+    classID: 28
+    packedSize: 1398248
+    offset: 8939840
+    sourceAssetGUID: 1c8010c1397ef1344875d4c795ca1794
+    buildTimeAssetPath: Assets/Scenes/MainScene/Lightmap-2_comp_light.exr
+  - fileID: 40
+    classID: 28
+    packedSize: 76044
+    offset: 10338088
+    sourceAssetGUID: 1dd197fbe27285540bcb85b5acf7c307
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Textures/Editor/thumbnail-missing.jpg
+  - fileID: 41
+    classID: 28
+    packedSize: 5592552
+    offset: 10414136
+    sourceAssetGUID: 20546e753edd4d04e81bacfdf7df89a3
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Techware/Keyboard
+      props texture/Keyboard Props_Maskmap.png
+  - fileID: 42
+    classID: 28
+    packedSize: 1398240
+    offset: 16006688
+    sourceAssetGUID: 2a7aced4ad204c04aa12898cd03af8d5
+    buildTimeAssetPath: Assets/World/Materials/Carpet/carpet_normal.png
+  - fileID: 43
+    classID: 28
+    packedSize: 699184
+    offset: 17404928
+    sourceAssetGUID: 2d46f3e662061494982a4e2fee82368c
+    buildTimeAssetPath: Assets/World/Materials/Sanded Glass/sanded glass_metallic.png
+  - fileID: 44
+    classID: 28
+    packedSize: 2796332
+    offset: 18104112
+    sourceAssetGUID: 2e748e8db2d0497459720d4d5ea02830
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Chair
+      set/Type 2/Chair Set T2_Diffuse.png
+  - fileID: 45
+    classID: 28
+    packedSize: 174880
+    offset: 20900448
+    sourceAssetGUID: 3035160080d367a4ca93479520500e84
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Props/shelf.png
+  - fileID: 46
+    classID: 28
+    packedSize: 699180
+    offset: 21075328
+    sourceAssetGUID: 3e3501229625393499371c300b6be42f
+    buildTimeAssetPath: Assets/World/Materials/Brushed Steel/brushed steel_height.png
+  - fileID: 47
+    classID: 28
+    packedSize: 5592556
+    offset: 21774512
+    sourceAssetGUID: 3ebbe5996fb79c6469abfaa8f98d552f
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Metallic.png
+  - fileID: 48
+    classID: 28
+    packedSize: 699172
+    offset: 27367072
+    sourceAssetGUID: 432908492a078d34d8f659cf3e5daa46
+    buildTimeAssetPath: Assets/World/Materials/Wood/wood_height.png
+  - fileID: 49
+    classID: 28
+    packedSize: 2796328
+    offset: 28066248
+    sourceAssetGUID: 4ce8cb6afe95b4a479faea2476e1c054
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Techware/Techware_Height.png
+  - fileID: 50
+    classID: 28
+    packedSize: 2796332
+    offset: 30862576
+    sourceAssetGUID: 4f091b62a0a33c54d95fcfa85d842011
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Chair
+      set/Chair Set _Diffuse.png
+  - fileID: 51
+    classID: 28
+    packedSize: 1398240
+    offset: 33658912
+    sourceAssetGUID: 51cb00aa1ec994b4dbbae7be367b5cd1
+    buildTimeAssetPath: Assets/World/Materials/Concrete/concrete_normal.png
+  - fileID: 52
+    classID: 28
+    packedSize: 2796332
+    offset: 35057152
+    sourceAssetGUID: 5660f8eb391afd44b91e68c1e31caf78
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Chair
+      set/Type 2/Chair Set T2_Height.png
+  - fileID: 53
+    classID: 28
+    packedSize: 699168
+    offset: 37853488
+    sourceAssetGUID: 5753d5c05381f4446aec4865c93dbc99
+    buildTimeAssetPath: Assets/World/Materials/Carpet/carpet.png
+  - fileID: 54
+    classID: 28
+    packedSize: 11184948
+    offset: 38552656
+    sourceAssetGUID: 58bbcaddcfee69640a08c76817efaeda
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Control Panel/Control
+      Panel Table_Diffuse.png
+  - fileID: 55
+    classID: 28
+    packedSize: 699192
+    offset: 49737608
+    sourceAssetGUID: 5a171b8d4d2e9c94a979d45c36ef0b2b
+    buildTimeAssetPath: Assets/World/Materials/Brushed Steel/brushed steel_diffuseOriginal.png
+  - fileID: 56
+    classID: 28
+    packedSize: 2796328
+    offset: 50436800
+    sourceAssetGUID: 5af67c8bb5e7169449eff2ba81c01b42
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Techware/Techware_Diffuse.png
+  - fileID: 57
+    classID: 28
+    packedSize: 5592544
+    offset: 53233128
+    sourceAssetGUID: 5ddb1259765f3f84894b30ed5b00f738
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Techware/Techware_Normal.png
+  - fileID: 58
+    classID: 28
+    packedSize: 5592548
+    offset: 58825672
+    sourceAssetGUID: 5ed1a003ceedcf74d9cb0626c667d5df
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Chair
+      set/Chair Set _Maskmap.png
+  - fileID: 59
+    classID: 28
+    packedSize: 1398248
+    offset: 64418224
+    sourceAssetGUID: 603c33cf1b83e2645a2064d6521dcd94
+    buildTimeAssetPath: Assets/Scenes/MainScene/Lightmap-1_comp_light.exr
+  - fileID: 60
+    classID: 28
+    packedSize: 254052
+    offset: 65816472
+    sourceAssetGUID: 68c1ba04061c1e545961624e9e4a8649
+    buildTimeAssetPath: Assets/World/Materials/HologramScreen/Ixnf0F5c_4x_1.jpg
+  - fileID: 61
+    classID: 28
+    packedSize: 2796340
+    offset: 66070528
+    sourceAssetGUID: 6938036b66a1cb143ab9aa55f2637d8a
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Texture set 1/Table texture set 1_Height.png
+  - fileID: 62
+    classID: 28
+    packedSize: 5592548
+    offset: 68866872
+    sourceAssetGUID: 6954506a7e8cc184ba4d451b9ab90ebf
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Chair
+      set/Type 2/Chair Set T2_Maskmap.png
+  - fileID: 63
+    classID: 28
+    packedSize: 699180
+    offset: 74459424
+    sourceAssetGUID: 6d5dd49b31438f442b38fb128bff7098
+    buildTimeAssetPath: Assets/World/Materials/Concrete/concrete_smoothness.png
+  - fileID: 64
+    classID: 28
+    packedSize: 349668
+    offset: 75158608
+    sourceAssetGUID: 6ffddd6758323434f8937fa725770a6d
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Props/crates_1001_Normal.tga
+  - fileID: 65
+    classID: 28
+    packedSize: 699184
+    offset: 75508280
+    sourceAssetGUID: 72d706031c270c442947b4273de8c547
+    buildTimeAssetPath: Assets/World/Materials/Brushed Steel/brushed steel_metallic.png
+  - fileID: 66
+    classID: 28
+    packedSize: 1398248
+    offset: 76207464
+    sourceAssetGUID: 739fb4f897725bc4b8b073f560196095
+    buildTimeAssetPath: Assets/Scenes/MainScene/Lightmap-0_comp_light.exr
+  - fileID: 67
+    classID: 28
+    packedSize: 699176
+    offset: 77605712
+    sourceAssetGUID: 73f28fcd585578848b74beed3a1cbb70
+    buildTimeAssetPath: Assets/World/Materials/Concrete/concrete_height.png
+  - fileID: 68
+    classID: 28
+    packedSize: 5592548
+    offset: 78304888
+    sourceAssetGUID: 7705d0f840409004580079eb4f9a0a50
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Chair
+      set/Chair Set _Normal.png
+  - fileID: 69
+    classID: 28
+    packedSize: 1398236
+    offset: 83897440
+    sourceAssetGUID: 82fe814fb46e83442a8b5ed87a24339f
+    buildTimeAssetPath: Assets/World/Materials/Wood/wood_normal.png
+  - fileID: 70
+    classID: 28
+    packedSize: 1398244
+    offset: 85295680
+    sourceAssetGUID: 85e9ad7e0ff351a43a82bd953c1f7044
+    buildTimeAssetPath: Assets/Scenes/MainScene/Lightmap-1_comp_dir.png
+  - fileID: 71
+    classID: 28
+    packedSize: 699176
+    offset: 86693928
+    sourceAssetGUID: 8bb0db10e47046a438a1b336ee373d69
+    buildTimeAssetPath: Assets/World/Materials/Carpet/carpet_height.png
+  - fileID: 72
+    classID: 28
+    packedSize: 699184
+    offset: 87393104
+    sourceAssetGUID: 8cee5e8b62208a345beb87fcd347ddce
+    buildTimeAssetPath: Assets/World/Materials/Sanded Glass/sanded glass_smoothness.png
+  - fileID: 73
+    classID: 28
+    packedSize: 699184
+    offset: 88092288
+    sourceAssetGUID: 8dd2912037b03e24bac4cc85fb460e42
+    buildTimeAssetPath: Assets/World/Materials/Concrete/concrete_diffuseOriginal.png
+  - fileID: 74
+    classID: 28
+    packedSize: 5592556
+    offset: 88791472
+    sourceAssetGUID: 8e783022ec224bb4ebc4f9c6095a870f
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Texture set 1/Table texture set 1_Maskmap.png
+  - fileID: 75
+    classID: 28
+    packedSize: 2796340
+    offset: 94384032
+    sourceAssetGUID: 97861cf9516989c4a98c20743801210f
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Emissive.png
+  - fileID: 76
+    classID: 28
+    packedSize: 2796340
+    offset: 97180376
+    sourceAssetGUID: 97bba379d9dc5c444aa632ebfb2d5e05
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Texture set 1/Table texture set 1_Diffuse.png
+  - fileID: 77
+    classID: 28
+    packedSize: 11184948
+    offset: 99976720
+    sourceAssetGUID: 9905cc33af778044b8a3b7505c6dae65
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Control Panel/Control
+      Panel Table_Height.png
+  - fileID: 78
+    classID: 28
+    packedSize: 5592552
+    offset: 111161672
+    sourceAssetGUID: a2f7bbc661f17524ca0e3ae9cd863cca
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Techware/Keyboard
+      props texture/Keyboard Props_Normal.png
+  - fileID: 79
+    classID: 28
+    packedSize: 699180
+    offset: 116754224
+    sourceAssetGUID: a33078adc13f007459c2f378d46a30de
+    buildTimeAssetPath: Assets/World/Materials/Carpet/carpet_smoothness.png
+  - fileID: 80
+    classID: 28
+    packedSize: 5592552
+    offset: 117453408
+    sourceAssetGUID: a7906ad1b1825cf4ea26343429b668cc
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Lights/Ceiling_lights_lo_Normal.png
+  - fileID: 81
+    classID: 28
+    packedSize: 699180
+    offset: 123045960
+    sourceAssetGUID: b154694384e6698488ff0109d37572aa
+    buildTimeAssetPath: Assets/World/Materials/Wood/wood_diffuseOriginal.png
+  - fileID: 82
+    classID: 28
+    packedSize: 699180
+    offset: 123745144
+    sourceAssetGUID: b558d9308c18ffe4d97acaea2700ffb8
+    buildTimeAssetPath: Assets/World/Materials/Sanded Glass/sanded glass_height.png
+  - fileID: 83
+    classID: 28
+    packedSize: 5592544
+    offset: 124444328
+    sourceAssetGUID: b66928c6a37e08b44862e3c0a38b9f6e
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Techware/Techware_Maskmap.png
+  - fileID: 84
+    classID: 28
+    packedSize: 49256
+    offset: 130036872
+    sourceAssetGUID: b6b1f1fa6be1ce54f8bcd5428c160a28
+    buildTimeAssetPath: Assets/Filamented/dfg-ms.exr
+  - fileID: 85
+    classID: 28
+    packedSize: 1398244
+    offset: 130086128
+    sourceAssetGUID: befe260654f1a76488b5783a782a1d24
+    buildTimeAssetPath: Assets/World/Materials/Brushed Steel/brushed steel_normal.png
+  - fileID: 86
+    classID: 28
+    packedSize: 22369772
+    offset: 131484376
+    sourceAssetGUID: c106de2c79182c44c8a8c2fa3afead86
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Control Panel/Control
+      Panel Table_Maskmap.png
+  - fileID: 87
+    classID: 28
+    packedSize: 349680
+    offset: 153854152
+    sourceAssetGUID: c89b880d7532a134c8ff3860aab8756b
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Props/crates_1001_MetallicSmoothness.tga
+  - fileID: 88
+    classID: 28
+    packedSize: 699176
+    offset: 154203832
+    sourceAssetGUID: ccbadb8dc3a411a44a9cdbc474c5c60b
+    buildTimeAssetPath: Assets/World/Materials/Wood/wood_smoothness.png
+  - fileID: 89
+    classID: 28
+    packedSize: 5592556
+    offset: 154903008
+    sourceAssetGUID: d1b318e35220c364abc55c258f3087c7
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Texture set 1/Table texture set 1_Normal.png
+  - fileID: 90
+    classID: 28
+    packedSize: 1398244
+    offset: 160495568
+    sourceAssetGUID: d65cf3d621f9f4840a5903f12621690d
+    buildTimeAssetPath: Assets/Scenes/MainScene/Lightmap-0_comp_dir.png
+  - fileID: 91
+    classID: 28
+    packedSize: 349680
+    offset: 161893816
+    sourceAssetGUID: dad9fcb1930e87f4a9569ccea704fb0a
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Props/shelf_1001_MetallicSmoothness.tga
+  - fileID: 92
+    classID: 28
+    packedSize: 174904
+    offset: 162243496
+    sourceAssetGUID: dd04e833627499b43b300f1e462a9132
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Props/shelf_1001_AlbedoTransparency.tga
+  - fileID: 93
+    classID: 28
+    packedSize: 2796336
+    offset: 162418400
+    sourceAssetGUID: dd2039f7080a46f458e3a92538343afe
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Techware/Keyboard
+      props texture/Keyboard Props_Diffuse.png
+  - fileID: 94
+    classID: 28
+    packedSize: 24396
+    offset: 165214736
+    sourceAssetGUID: de4847d5243c3e74caa8eac7f100ae18
+    buildTimeAssetPath: Assets/World/Textures/TickerTest.psd
+  - fileID: 95
+    classID: 28
+    packedSize: 76032
+    offset: 165239136
+    sourceAssetGUID: def0ec0ff05111b4196e63bc474fb66d
+    buildTimeAssetPath: Assets/World/Textures/dw-last.jpg
+  - fileID: 96
+    classID: 28
+    packedSize: 699172
+    offset: 165315168
+    sourceAssetGUID: dfbc71fc747c8ff43aa7007396b89223
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Props/crates  AO.png
+  - fileID: 97
+    classID: 28
+    packedSize: 2796336
+    offset: 166014344
+    sourceAssetGUID: e4db1df9ebeeac84180dbb2e2d8d52ac
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Techware/Keyboard
+      props texture/Keyboard Props_Height.png
+  - fileID: 98
+    classID: 28
+    packedSize: 22369772
+    offset: 168810680
+    sourceAssetGUID: f14b1d28e73b9c444ba95572e5cb294c
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Control Panel/Control
+      Panel Table_Normal.png
+  - fileID: 99
+    classID: 28
+    packedSize: 2796332
+    offset: 191180456
+    sourceAssetGUID: f8ad76bbae558e64ea36c9b06d6e211d
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Chair
+      set/Chair Set _Height.png
+  - fileID: 100
+    classID: 28
+    packedSize: 5592548
+    offset: 193976792
+    sourceAssetGUID: f91a2fb7dea76b94cab5704dfa40e5d1
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Chair
+      set/Type 2/Chair Set T2_Normal.png
+  - fileID: 101
+    classID: 28
+    packedSize: 174904
+    offset: 199569344
+    sourceAssetGUID: fc7820c271801394b94c1fc2b0f85212
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Textures/Environment/Table
+      texture set/Table Props/crates_1001_AlbedoTransparency.tga
+  - fileID: 102
+    classID: 28
+    packedSize: 1398244
+    offset: 199744248
+    sourceAssetGUID: fe1e5044acdcea34bb3afdf38efea7f2
+    buildTimeAssetPath: Assets/World/Materials/Sanded Glass/sanded glass_normal.png
+  - fileID: 103
+    classID: 28
+    packedSize: 1048696
+    offset: 201142496
+    sourceAssetGUID: 8f586378b4e144a9851e7b34d9b748ee
+    buildTimeAssetPath: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans
+      SDF.asset
+  - fileID: 104
+    classID: 43
+    packedSize: 4696
+    offset: 202191192
+    sourceAssetGUID: 4d7a1f2d72196e24bb9a9eefb40859c3
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Office Interior/Tables/Table
+      Set 1.FBX
+  - fileID: 105
+    classID: 43
+    packedSize: 121788
+    offset: 202195888
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 106
+    classID: 43
+    packedSize: 4700
+    offset: 202317680
+    sourceAssetGUID: 4d7a1f2d72196e24bb9a9eefb40859c3
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Office Interior/Tables/Table
+      Set 1.FBX
+  - fileID: 107
+    classID: 43
+    packedSize: 2376
+    offset: 202322384
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 108
+    classID: 43
+    packedSize: 4700
+    offset: 202324760
+    sourceAssetGUID: 4d7a1f2d72196e24bb9a9eefb40859c3
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Office Interior/Tables/Table
+      Set 1.FBX
+  - fileID: 109
+    classID: 43
+    packedSize: 392560
+    offset: 202329464
+    sourceAssetGUID: d466e2eae95ed804f85f00b0924ee018
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Office Interior/Chairs/office
+      chair.FBX
+  - fileID: 110
+    classID: 43
+    packedSize: 36084
+    offset: 202722024
+    sourceAssetGUID: 4d7a1f2d72196e24bb9a9eefb40859c3
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Office Interior/Tables/Table
+      Set 1.FBX
+  - fileID: 111
+    classID: 43
+    packedSize: 492
+    offset: 202758112
+    sourceAssetGUID: 199afa22540c17c48af621685042c64b
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/ScreenModel/screen.fbx
+  - fileID: 112
+    classID: 43
+    packedSize: 2000
+    offset: 202758608
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 113
+    classID: 43
+    packedSize: 90132
+    offset: 202760608
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 114
+    classID: 43
+    packedSize: 11736
+    offset: 202850744
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 115
+    classID: 43
+    packedSize: 1592
+    offset: 202862480
+    sourceAssetGUID: 03f0313d06795894e85c89bfc12f42e9
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Lights/Ceiling Lights Lo.FBX
+  - fileID: 116
+    classID: 43
+    packedSize: 93812
+    offset: 202864072
+    sourceAssetGUID: 2bb8e74e51bc707479666db31fc93b4d
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Office Interior/Radio.FBX
+  - fileID: 117
+    classID: 43
+    packedSize: 32644
+    offset: 202957888
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 118
+    classID: 43
+    packedSize: 15964
+    offset: 202990536
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 119
+    classID: 43
+    packedSize: 2380
+    offset: 203006504
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 120
+    classID: 43
+    packedSize: 5792
+    offset: 203008888
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 121
+    classID: 43
+    packedSize: 5792
+    offset: 203014680
+    sourceAssetGUID: a2c6ec21de67c5e4fa60eaeb1e503992
+    buildTimeAssetPath: Assets/World/Models/Room.fbx
+  - fileID: 122
+    classID: 43
+    packedSize: 4700
+    offset: 203020472
+    sourceAssetGUID: 4d7a1f2d72196e24bb9a9eefb40859c3
+    buildTimeAssetPath: Assets/ScifiOfficeLite/Meshes/Office Interior/Tables/Table
+      Set 1.FBX
+  - fileID: 123
+    classID: 48
+    packedSize: 6455600
+    offset: 203025176
+    sourceAssetGUID: 0000000000000000f000000000000000
+    buildTimeAssetPath: Resources/unity_builtin_extra
+  - fileID: 124
+    classID: 48
+    packedSize: 5480
+    offset: 209480776
+    sourceAssetGUID: 0000000000000000f000000000000000
+    buildTimeAssetPath: Resources/unity_builtin_extra
+  - fileID: 125
+    classID: 48
+    packedSize: 7312
+    offset: 209486256
+    sourceAssetGUID: 29fed12d8547e354e90be987488147c1
+    buildTimeAssetPath: Assets/SFHologram/Hologram/Shader/Hologram.shader
+  - fileID: 126
+    classID: 48
+    packedSize: 313936
+    offset: 209493568
+    sourceAssetGUID: 881e37927165995428be4713c77c0609
+    buildTimeAssetPath: Assets/!Mai Lofi/Shaders/!Mai Glass!/Shader/Mai Glass!.shader
+  - fileID: 127
+    classID: 48
+    packedSize: 4060828
+    offset: 209807504
+    sourceAssetGUID: 9829e18681954944a8b25de9b080a0b6
+    buildTimeAssetPath: Assets/Filamented/Standard.shader
+  - fileID: 128
+    classID: 48
+    packedSize: 6292
+    offset: 213868336
+    sourceAssetGUID: afdaa9a8933da2f4ba32629820d9b637
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Shaders/VideoScreen.shader
+  - fileID: 129
+    classID: 48
+    packedSize: 19276
+    offset: 213874632
+    sourceAssetGUID: fe393ace9b354375a9cb14cdbbc28be4
+    buildTimeAssetPath: Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
+  - fileID: 130
+    classID: 74
+    packedSize: 2508
+    offset: 213893912
+    sourceAssetGUID: 32ef3a76835faec41a7c4f67c6cd5ee6
+    buildTimeAssetPath: Assets/World/Animations/RotatingTicker.anim
+  - fileID: 131
+    classID: 83
+    packedSize: 128
+    offset: 213896424
+    sourceAssetGUID: 0c769037cc6da6e41a95c900fdb861d5
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/3up.ogg
+  - fileID: 132
+    classID: 83
+    packedSize: 132
+    offset: 213896552
+    sourceAssetGUID: 25364c67297d5114db06b1ea6c447e48
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/button1.ogg
+  - fileID: 133
+    classID: 83
+    packedSize: 136
+    offset: 213896688
+    sourceAssetGUID: 53aa0b342719180499477cab2aaf66d5
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/rollover3.wav
+  - fileID: 134
+    classID: 83
+    packedSize: 128
+    offset: 213896824
+    sourceAssetGUID: 80d62820e67960e46b147aadf9bb00a9
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/2hp.ogg
+  - fileID: 135
+    classID: 83
+    packedSize: 132
+    offset: 213896952
+    sourceAssetGUID: 94a6186320acf27408415009e219a58c
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/welcome.ogg
+  - fileID: 136
+    classID: 83
+    packedSize: 128
+    offset: 213897088
+    sourceAssetGUID: ae99c9689d90f0944bdd862e93d4776e
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/2lp.ogg
+  - fileID: 137
+    classID: 83
+    packedSize: 132
+    offset: 213897216
+    sourceAssetGUID: fd9e675015db9ea41b47e35ba89a0c5b
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/button2.ogg
+  - fileID: 138
+    classID: 89
+    packedSize: 131424
+    offset: 213897352
+    sourceAssetGUID: 1da36419bf022c04393e6fa6a3d7e28e
+    buildTimeAssetPath: Assets/Scenes/MainScene/ReflectionProbe-1.exr
+  - fileID: 139
+    classID: 89
+    packedSize: 6291644
+    offset: 214028776
+    sourceAssetGUID: b795517bfc2a53d4f93cbf698b05d157
+    buildTimeAssetPath: Assets/World/Textures/shanghai_bund_2k.exr
+  - fileID: 140
+    classID: 89
+    packedSize: 131424
+    offset: 220320424
+    sourceAssetGUID: ce0cbf5bb6e2c8e49a070364a6501c96
+    buildTimeAssetPath: Assets/Scenes/MainScene/ReflectionProbe-0.exr
+  - fileID: 141
+    classID: 91
+    packedSize: 428
+    offset: 220451848
+    sourceAssetGUID: 38d4006bfd18b5e479a674ea5e25f7b2
+    buildTimeAssetPath: Assets/World/Animations/Ticker.controller
+  - fileID: 142
+    classID: 115
+    packedSize: 120
+    offset: 115488
+    sourceAssetGUID: 661092b4961be7145bfbe56e1e62337b
+    buildTimeAssetPath: Packages/com.vrchat.worlds/Runtime/VRCSDK/Plugins/VRCSDK3.dll
+  - fileID: 143
+    classID: 115
+    packedSize: 120
+    offset: 115608
+    sourceAssetGUID: 661092b4961be7145bfbe56e1e62337b
+    buildTimeAssetPath: Packages/com.vrchat.worlds/Runtime/VRCSDK/Plugins/VRCSDK3.dll
+  - fileID: 144
+    classID: 115
+    packedSize: 96
+    offset: 115728
+    sourceAssetGUID: 4ecd63eff847044b68db9453ce219299
+    buildTimeAssetPath: Packages/com.vrchat.base/Runtime/VRCSDK/Plugins/VRCCore-Editor.dll
+  - fileID: 145
+    classID: 115
+    packedSize: 116
+    offset: 115824
+    sourceAssetGUID: 661092b4961be7145bfbe56e1e62337b
+    buildTimeAssetPath: Packages/com.vrchat.worlds/Runtime/VRCSDK/Plugins/VRCSDK3.dll
+  - fileID: 146
+    classID: 115
+    packedSize: 116
+    offset: 115944
+    sourceAssetGUID: 661092b4961be7145bfbe56e1e62337b
+    buildTimeAssetPath: Packages/com.vrchat.worlds/Runtime/VRCSDK/Plugins/VRCSDK3.dll
+  - fileID: 147
+    classID: 115
+    packedSize: 108
+    offset: 116064
+    sourceAssetGUID: 661092b4961be7145bfbe56e1e62337b
+    buildTimeAssetPath: Packages/com.vrchat.worlds/Runtime/VRCSDK/Plugins/VRCSDK3.dll
+  - fileID: 148
+    classID: 115
+    packedSize: 96
+    offset: 116176
+    sourceAssetGUID: 0cd44c1031e13a943bb63640046fad76
+    buildTimeAssetPath: Packages/com.unity.ugui/Runtime/UI/Core/Layout/CanvasScaler.cs
+  - fileID: 149
+    classID: 115
+    packedSize: 120
+    offset: 116272
+    sourceAssetGUID: 30649d3a9faa99c48a7b1166b86bf2a0
+    buildTimeAssetPath: Packages/com.unity.ugui/Runtime/UI/Core/Layout/HorizontalLayoutGroup.cs
+  - fileID: 150
+    classID: 115
+    packedSize: 88
+    offset: 116392
+    sourceAssetGUID: 45115577ef41a5b4ca741ed302693907
+    buildTimeAssetPath: Packages/com.vrchat.worlds/Runtime/Udon/UdonBehaviour.cs
+  - fileID: 151
+    classID: 115
+    packedSize: 128
+    offset: 116480
+    sourceAssetGUID: bf61d954ecb803046953c666facfb904
+    buildTimeAssetPath: Packages/com.vrchat.worlds/Runtime/Udon/ProgramSources/SerializedUdonProgramAsset.cs
+  - fileID: 152
+    classID: 115
+    packedSize: 104
+    offset: 116608
+    sourceAssetGUID: dc42784cf147c0c48a680349fa168899
+    buildTimeAssetPath: Packages/com.unity.ugui/Runtime/UI/Core/GraphicRaycaster.cs
+  - fileID: 153
+    classID: 115
+    packedSize: 100
+    offset: 116712
+    sourceAssetGUID: f4688fdb7df04437aeb418b961361dc5
+    buildTimeAssetPath: Packages/com.unity.textmeshpro/Scripts/Runtime/TextMeshProUGUI.cs
+  - fileID: 154
+    classID: 115
+    packedSize: 120
+    offset: 116816
+    sourceAssetGUID: 661092b4961be7145bfbe56e1e62337b
+    buildTimeAssetPath: Packages/com.vrchat.worlds/Runtime/VRCSDK/Plugins/VRCSDK3.dll
+  - fileID: 155
+    classID: 213
+    packedSize: 472
+    offset: 220452280
+    sourceAssetGUID: 1dd197fbe27285540bcb85b5acf7c307
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Textures/Editor/thumbnail-missing.jpg
+  - fileID: 156
+    classID: 258
+    packedSize: 40
+    offset: 220452752
+    sourceAssetGUID: 501eaccb904508b4e9bde1d89b7c0247
+    buildTimeAssetPath: Assets/Scenes/MainScene/LightingData.asset
+  - fileID: 157
+    classID: 114
+    packedSize: 203840
+    offset: 220452792
+    sourceAssetGUID: e8194da6a2ade1a41b8aa8a6a9d0fc1e
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/05e583ea9a61740448302ed6c8e68b36.asset
+  - fileID: 158
+    classID: 114
+    packedSize: 282592
+    offset: 220656632
+    sourceAssetGUID: 8a5148049d19ba941a31739e949a5bc7
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/1f6d6a1bd8f9074489333263f2742da4.asset
+  - fileID: 159
+    classID: 114
+    packedSize: 603624
+    offset: 220939224
+    sourceAssetGUID: 1e903f502c7f81644a31bce5d4d6ecf8
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/21fc29260c5bd0749a0a0793dedfd6b5.asset
+  - fileID: 160
+    classID: 114
+    packedSize: 307464
+    offset: 221542848
+    sourceAssetGUID: 8b7408c15a1df534583709f4ae1cccf0
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/25d8d5bb7c3bcce45bb386584147d918.asset
+  - fileID: 161
+    classID: 114
+    packedSize: 52520
+    offset: 221850312
+    sourceAssetGUID: d51fc5b1ee5291d48b66d19e3c766463
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/2d82818552b513f4aa04f6473c6b10fb.asset
+  - fileID: 162
+    classID: 114
+    packedSize: 9756
+    offset: 221902832
+    sourceAssetGUID: 1e6a6e5b723740544866611dd3d364b2
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/3859c94ab10b9734d9bffe551b0bff18.asset
+  - fileID: 163
+    classID: 114
+    packedSize: 198080
+    offset: 221912592
+    sourceAssetGUID: 56d1b824938876f4caeaaacdfd47b32d
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/554c3cee297678047a96e514e7f2b28a.asset
+  - fileID: 164
+    classID: 114
+    packedSize: 183168
+    offset: 222110672
+    sourceAssetGUID: cf0cc6cb595f7f64086476f0f6b901dc
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/55d02231317c67c44906c705bea6040f.asset
+  - fileID: 165
+    classID: 114
+    packedSize: 11644
+    offset: 222293840
+    sourceAssetGUID: d0420254939ad38479e2c51afd018734
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/6f70bbf461a09fb4299c49390247ea8f.asset
+  - fileID: 166
+    classID: 114
+    packedSize: 77380
+    offset: 222305488
+    sourceAssetGUID: e4b4fa060bcfc2340ad54cf4eac3647a
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/776c593a4a6211a4390742bdfc02c226.asset
+  - fileID: 167
+    classID: 114
+    packedSize: 76848
+    offset: 222382872
+    sourceAssetGUID: 21e42ca309080d345969e4e3b23c9317
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/89463deebdc38c248b635e0161b490c3.asset
+  - fileID: 168
+    classID: 114
+    packedSize: 15728
+    offset: 222459720
+    sourceAssetGUID: 69d18492d30836e4391a32b274fea986
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/8db89c138a3f5604ba46ceca75ddab52.asset
+  - fileID: 169
+    classID: 114
+    packedSize: 199256
+    offset: 222475448
+    sourceAssetGUID: e0331ca3cc30540449c52a15c70cb2f7
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/8f59742efb0da1544adb57998f5bda8f.asset
+  - fileID: 170
+    classID: 114
+    packedSize: 215408
+    offset: 222674704
+    sourceAssetGUID: f65bd13086bd5c44da5accbd8a9ae39d
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/906cb6fff62906a4da55550bc22700c4.asset
+  - fileID: 171
+    classID: 114
+    packedSize: 10012
+    offset: 222890112
+    sourceAssetGUID: 9ad474d0885c9ba449311d8b5e3b15f0
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/980041535b99e5b45b0ef8f82a9d89b7.asset
+  - fileID: 172
+    classID: 114
+    packedSize: 174456
+    offset: 222900128
+    sourceAssetGUID: 2b52dd6beca0b92418b6353b2e32f861
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/9962d82bf18e97544a9c9c6e084b63c6.asset
+  - fileID: 173
+    classID: 114
+    packedSize: 18192
+    offset: 223074584
+    sourceAssetGUID: 11c96cb32a763674097a3e90a5c982a5
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/9c5c6b0b5e0a38d4385f6198a781f3a1.asset
+  - fileID: 174
+    classID: 114
+    packedSize: 77380
+    offset: 223092776
+    sourceAssetGUID: 62e0d98165ca350438b32a4ad5cc97b3
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/a229e3bf428a40240b4a85dc980b49bf.asset
+  - fileID: 175
+    classID: 114
+    packedSize: 34764
+    offset: 223170160
+    sourceAssetGUID: 783073458b70e4048a7533f062e250bb
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/aa3bc7df87105b84f98eeec8c8850d05.asset
+  - fileID: 176
+    classID: 114
+    packedSize: 210728
+    offset: 223204928
+    sourceAssetGUID: 838f85180c5fadc48b47292e8b48b387
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/af3ceb5b6f09749409667b21e4b34357.asset
+  - fileID: 177
+    classID: 114
+    packedSize: 217904
+    offset: 223415656
+    sourceAssetGUID: 07b0ca2969deedb498a7f2ae6fdab321
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/b66b579c3e85f0e4eb788857c649493b.asset
+  - fileID: 178
+    classID: 114
+    packedSize: 201416
+    offset: 223633560
+    sourceAssetGUID: 6ea71925289763843adebb65a3e83834
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/b9324e8bb4178c440a53b23a2d65753e.asset
+  - fileID: 179
+    classID: 114
+    packedSize: 200032
+    offset: 223834976
+    sourceAssetGUID: 78c4fb4d7c4676546bd83ce33e687e80
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/bd0468df61391b1469b764164a31c012.asset
+  - fileID: 180
+    classID: 114
+    packedSize: 161600
+    offset: 224035008
+    sourceAssetGUID: d7d2be32ead34fa4ebbf64bc12f93008
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/c650cfaf902954e42b8aaabe0e0b96aa.asset
+  - fileID: 181
+    classID: 114
+    packedSize: 222700
+    offset: 224196608
+    sourceAssetGUID: 00e32ba316ef8c64d84a48a05718793b
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/c6eeb22984dc1404ca5c180426a250c8.asset
+  - fileID: 182
+    classID: 114
+    packedSize: 434836
+    offset: 224419312
+    sourceAssetGUID: e4725d25b8dce3c40871ad6c871a08f1
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/cf0f4257c423a0f41a5c661dd9682010.asset
+  - fileID: 183
+    classID: 114
+    packedSize: 195200
+    offset: 224854152
+    sourceAssetGUID: d840c3c1bfbb439428a5ab34754fd7b5
+    buildTimeAssetPath: Assets/SerializedUdonPrograms/e35298f66fc2ecd48a3b00eb3cee7968.asset
+--- !u!641289076 &4974661453746434319
+AudioBuildInfo:
+  m_IsAudioDisabled: 0
+  m_AudioClipCount: 7
+  m_AudioMixerCount: 0
+--- !u!668709126 &6093895649408872681
+BuiltAssetBundleInfoSet:
+  bundleInfos:
+  - bundleName: scene-standalonewindows64-mainscene.vrcw
+    bundleArchiveFile: 3
+    packagedFileIndices: 000000000100000002000000
+  - bundleName: AutoDeploy
+    bundleArchiveFile: 6
+    packagedFileIndices: 05000000
+--- !u!1126 &7858281036969811044
+PackedAssets:
+  m_File: 5
+  m_ShortPath: CAB-9c661e3ff82a5813101a7fcdacb98ac3
+  m_Overhead: 4096
+  m_Contents:
+  - fileID: 1
+    classID: 142
+    packedSize: 104
+    offset: 4096
+    sourceAssetGUID: 00000000000000000000000000000000
+    buildTimeAssetPath: AssetBundle Object
+  - fileID: 2
+    classID: 290
+    packedSize: 108
+    offset: 4200
+    sourceAssetGUID: 00000000000000000000000000000000
+    buildTimeAssetPath: 'Built-in AssetBundleManifest: AssetBundleManifest'
+--- !u!1126 &8680868107873010755
+PackedAssets:
+  m_File: 2
+  m_ShortPath: BuildPlayer-MainScene.resource
+  m_Overhead: 0
+  m_Contents:
+  - fileID: 0
+    classID: 83
+    packedSize: 3392
+    offset: 0
+    sourceAssetGUID: 80d62820e67960e46b147aadf9bb00a9
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/2hp.ogg
+  - fileID: 0
+    classID: 83
+    packedSize: 3712
+    offset: 0
+    sourceAssetGUID: ae99c9689d90f0944bdd862e93d4776e
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/2lp.ogg
+  - fileID: 0
+    classID: 83
+    packedSize: 5024
+    offset: 0
+    sourceAssetGUID: 94a6186320acf27408415009e219a58c
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/welcome.ogg
+  - fileID: 0
+    classID: 83
+    packedSize: 5856
+    offset: 0
+    sourceAssetGUID: 0c769037cc6da6e41a95c900fdb861d5
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/3up.ogg
+  - fileID: 0
+    classID: 83
+    packedSize: 5984
+    offset: 0
+    sourceAssetGUID: 53aa0b342719180499477cab2aaf66d5
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/rollover3.wav
+  - fileID: 0
+    classID: 83
+    packedSize: 16960
+    offset: 0
+    sourceAssetGUID: fd9e675015db9ea41b47e35ba89a0c5b
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/button2.ogg
+  - fileID: 0
+    classID: 83
+    packedSize: 17088
+    offset: 0
+    sourceAssetGUID: 25364c67297d5114db06b1ea6c447e48
+    buildTimeAssetPath: Assets/DecentM/Prefabs/VideoPlayer/Audio/button1.ogg
