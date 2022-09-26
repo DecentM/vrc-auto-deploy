@@ -24,6 +24,6 @@ MonoBehaviour:
   contentViolence: 0
   contentGore: 0
   contentOther: 0
-  releasePublic: 0
+  releasePublic: 1
   contentFeatured: 0
   contentSDKExample: 0
