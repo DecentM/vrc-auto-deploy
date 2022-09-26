@@ -1,14 +1,17 @@
 ﻿using UnityEditor;
 using DecentM.AutoDeploy;
 
-public static class Exporter
+namespace World
 {
-    [MenuItem("DecentM/Export AutoDeploy Package")]
-    public static void Export()
+    public static class Exporter
     {
-        PackageExporter.ExportPackage("DecentM.AutoDeploy", new string[]
+        [MenuItem("DecentM/Export AutoDeploy Package")]
+        public static void Export()
         {
+            PackageExporter.ExportPackage("DecentM.AutoDeploy", new string[]
+            {
             "Assets/DecentM/AutoDeploy"
-        });
+            });
+        }
     }
 }
