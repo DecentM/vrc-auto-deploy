@@ -17,9 +17,9 @@ MonoBehaviour:
   password: 
   use2fa: 0
   otpToken: 
-  worldName: My World
+  worldName: Evergreen Newsroom
   worldDescription: This description was updated using GitHub Actions.
-  worldCapacity: 30
+  worldCapacity: 10
   contentSex: 0
   contentViolence: 0
   contentGore: 0
