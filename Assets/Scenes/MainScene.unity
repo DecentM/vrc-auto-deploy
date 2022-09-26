@@ -1482,10 +1482,10 @@ RectTransform:
   m_Father: {fileID: 377140355}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -239.995}
-  m_SizeDelta: {x: 900, y: 53.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 53.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153867385
 MonoBehaviour:
@@ -1506,7 +1506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Deutsche Welle
+  m_text: Cool Publisher Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a838b2eefbdb45a429da6e252d71d9ba, type: 2}
   m_sharedMaterial: {fileID: -1075884353723441364, guid: a838b2eefbdb45a429da6e252d71d9ba,
@@ -1958,7 +1958,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2382,10 +2382,10 @@ RectTransform:
   m_Father: {fileID: 377140355}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -382.75}
-  m_SizeDelta: {x: 900, y: 216.01}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 450, y: 0}
+  m_SizeDelta: {x: 900, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &374801536
 MonoBehaviour:
@@ -2406,9 +2406,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Ukrainian president has promised to protect Russian soldiers who voluntarily
-    surrender. Meanwhile, pro-Russian authorities have accused Ukraine of targeting
-    a hotel in Kherson. DW has the latest.
+  m_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis odio
+    quis augue malesuada consequat. Duis vitae tellus at tellus congue pretium.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a838b2eefbdb45a429da6e252d71d9ba, type: 2}
   m_sharedMaterial: {fileID: -1075884353723441364, guid: a838b2eefbdb45a429da6e252d71d9ba,
@@ -2602,7 +2601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &377140355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2621,10 +2620,10 @@ RectTransform:
   m_Father: {fileID: 77911133}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -360}
-  m_SizeDelta: {x: 900, y: 720}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377140356
 MonoBehaviour:
@@ -3806,8 +3805,8 @@ RectTransform:
   m_Father: {fileID: 856795951}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.40798372}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4034,7 +4033,7 @@ RectTransform:
   m_GameObject: {fileID: 501392819}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_LocalScale: {x: 0.0006, y: 0.0006, z: 0.0006}
   m_Children:
   - {fileID: 1556111605}
   m_Father: {fileID: 1709942357}
@@ -4043,7 +4042,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 720}
+  m_SizeDelta: {x: 4834, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501392821
 MonoBehaviour:
@@ -4969,10 +4968,10 @@ RectTransform:
   m_Father: {fileID: 702045534}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 84}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -82.07501}
+  m_SizeDelta: {x: 900, y: 84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &657874289
 MonoBehaviour:
@@ -4993,7 +4992,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Zelenskyy urges Russians to defy 'criminal mobilization'
+  m_text: News Title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a1b247ab2d1e4094395900ec959b08eb, type: 2}
   m_sharedMaterial: {fileID: -3010117421524395367, guid: a1b247ab2d1e4094395900ec959b08eb,
@@ -5390,7 +5389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &702045534
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5407,10 +5406,10 @@ RectTransform:
   m_Father: {fileID: 77911133}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -360}
+  m_SizeDelta: {x: 900, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &702045535
 MonoBehaviour:
@@ -5484,10 +5483,10 @@ RectTransform:
   m_Father: {fileID: 702045534}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 555.85}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -442}
+  m_SizeDelta: {x: 900, y: 555.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &751880014
 MonoBehaviour:
@@ -6045,8 +6044,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.987114, y: 3.334444, z: 2.1422591}
-  m_Center: {x: 4.919457, y: 1.8125801, z: 0.08515396}
+  m_Size: {x: 7.3304935, y: 3.334444, z: 1.5779424}
+  m_Center: {x: 4.747621, y: 1.8125801, z: -0.19699922}
 --- !u!1 &855663280
 GameObject:
   m_ObjectHideFlags: 0
@@ -6735,10 +6734,10 @@ RectTransform:
   m_Father: {fileID: 2108446069}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1012365930
 Animator:
@@ -8466,10 +8465,10 @@ RectTransform:
   m_Father: {fileID: 377140355}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -163.245}
-  m_SizeDelta: {x: 900, y: 84}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1351375160
 MonoBehaviour:
@@ -8490,7 +8489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Zelenskyy urges Russians to defy 'criminal mobilization'
+  m_text: News Title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a1b247ab2d1e4094395900ec959b08eb, type: 2}
   m_sharedMaterial: {fileID: -3010117421524395367, guid: a1b247ab2d1e4094395900ec959b08eb,
@@ -8985,8 +8984,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 431723669}
   m_HandleRect: {fileID: 431723668}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.19774733
+  m_Value: 1.0000004
+  m_Size: 0.5920163
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10036,6 +10035,36 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.442
       objectReference: {fileID: 0}
+    - target: {fileID: -6360398266376417320, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.57846105
+      objectReference: {fileID: 0}
+    - target: {fileID: -6360398266376417320, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.57846105
+      objectReference: {fileID: 0}
+    - target: {fileID: -6360398266376417320, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.40667295
+      objectReference: {fileID: 0}
+    - target: {fileID: -6360398266376417320, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.40667295
+      objectReference: {fileID: 0}
+    - target: {fileID: -6360398266376417320, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -6360398266376417320, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 70.216
+      objectReference: {fileID: 0}
     - target: {fileID: -6263470017852382253, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10116,6 +10145,36 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -3323469710072830984, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.57595307
+      objectReference: {fileID: 0}
+    - target: {fileID: -3323469710072830984, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.57595307
+      objectReference: {fileID: 0}
+    - target: {fileID: -3323469710072830984, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.4102171
+      objectReference: {fileID: 0}
+    - target: {fileID: -3323469710072830984, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.4102171
+      objectReference: {fileID: 0}
+    - target: {fileID: -3323469710072830984, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -3323469710072830984, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 70.920006
+      objectReference: {fileID: 0}
     - target: {fileID: -2357884022608881519, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -10144,7 +10203,7 @@ PrefabInstance:
     - target: {fileID: 359312179909449575, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 415059134719850254, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
         type: 3}
@@ -10230,6 +10289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570067995187348682, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.293
       objectReference: {fileID: 0}
     - target: {fileID: 4937157167955004792, guid: a2c6ec21de67c5e4fa60eaeb1e503992,
         type: 3}
@@ -10413,8 +10477,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1639185437}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &1655712326
-CapsuleCollider:
+--- !u!65 &1655712326
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -10423,10 +10487,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.02226907
-  m_Height: 0.1
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.03}
+  serializedVersion: 2
+  m_Size: {x: 0.044538163, y: 0.035467446, z: 0.023001442}
+  m_Center: {x: 4.0821282e-10, y: -0.004535376, z: 0.011500751}
 --- !u!1001 &1660591120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10676,10 +10739,10 @@ RectTransform:
   m_Father: {fileID: 1767452806}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -50}
-  m_SizeDelta: {x: 400, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1708862016
 MonoBehaviour:
@@ -10816,14 +10879,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709942356}
-  m_LocalRotation: {x: 0.18301213, y: 0.68301183, z: -0.1830127, w: 0.68301374}
-  m_LocalPosition: {x: -2.332, y: 1.123, z: 0}
+  m_LocalRotation: {x: 0.2898865, y: 0.64623594, z: -0.29133356, w: 0.64301604}
+  m_LocalPosition: {x: -1.4902, y: 0.8874, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 501392820}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 30.000002, y: 90.00001, z: 0}
+  m_LocalEulerAnglesHint: {x: 48.534004, y: 90.286, z: 0.001}
 --- !u!114 &1709942358
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -11079,10 +11142,10 @@ RectTransform:
   m_Father: {fileID: 377140355}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -548.755}
-  m_SizeDelta: {x: 900, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767452807
 MonoBehaviour:
@@ -11384,10 +11447,10 @@ RectTransform:
   m_Father: {fileID: 1203044400}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 80, y: 0}
-  m_SizeDelta: {x: 723, y: 0}
+  m_SizeDelta: {x: 723, y: 938.91}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1802077817
 MonoBehaviour:
@@ -11408,64 +11471,44 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ukrainian President Volodymyr Zelenskyy called on Russians who have been
-    drafted as part of the partial mobilization to not join the invasion force in
-    Ukraine. \n\n\"It is better not to take a conscription letter than to die in
-    a foreign land as a war criminal,\" he said during his nightly address late on
-    Saturday. \n\nZelenskyy also pledged to protect Russian soldiers who voluntarily
-    surrender, saying they would be treated \"in accordance with all conventions\"
-    and that they would not let it be known that the soldier had surrendered voluntarily.
-    \n\nRussian President Vladimir Putin on Saturday signed into law an amendment
-    to the criminal code to increase jail time for those found to have committed
-    voluntary surrender. \n\nThe Ukrainian president also slammed Russia's \"criminal
-    mobilization,\" saying\"Russian commanders do not care about the lives of Russians
-    \u2014 they just need to replenish the empty spaces left by the dead, wounded,
-    those who fled or the Russian soldiers that were captured.\" \n\nHere's a roundup
-    of other news from or concerning the war in Ukraine on September 24. Pro-Russia
-    officials says Ukraine behind strike on Kherson hotel that killed two \n\nTwo
-    people were killed in a missile strike that hit a hotel in the occupied Ukrainian
-    city of Kherson, pro-Russian authorities have said. \n\nAn official said that
-    pro-Russian former lawmaker Oleksiy Jouravko was one of those killed. Authorities
-    said Russian media were also in the hotel during the strike. \n\n\"Today, at
-    around 05:30 (0230 GMT), the Ukrainian armed forces fired a missile on the Play
-    Hotel by Ribas\" the regional Russian-controlled administration said in a statement.
-    \n\n\"According to preliminary data, two people died in this terrorist act. Rescue
-    workers are still combing the rubble to search for victims.\" \n\nKherson is
-    one of the regions where occupying forces are carrying out a so-called \"referendum\"
-    on whether regions of Ukraine should join the Russian Federation.\n\n\nSo-called
-    referendums in Ukraine\n\nTo view this video please enable JavaScript, and consider
-    upgrading to a web browser that supports HTML5 video Odesa once again under fire
-    from Iranian-made drones \n\nUkraine said on Sunday that Iranian-made drones
-    were once again used overnight in a strike on the southern port city of Odesa.
-    \n\n\"Odesa was attacked again by enemy kamikaze drones,\" the Ukrainian army's
-    Operational Command South said on Facebook. \n\n\"The enemy hit the administrative
-    building in the city center three times,\" it said, adding that one drone was
-    shot down and no casualties had been reported. \n\nThe strikes come two days
-    after a similar incident left two civilians dead and resulted in Ukraine downgrading
-    Iran's diplomatic presence in the country over its supply of weaponry to Russia.
-    Long queues at Finnish border continue to grow \n\nA 500-meter (0.3 mile) long
-    queue had formed at the important Vaalimaa crossing on the Russian-Finnish border
-    on Sunday morning, according to Matti Pitkaniitty, head of the International
-    Affairs Unit for the Finnish border guards. \n\nFinland saw a total of 8,572
-    Russian citizens cross into the country on Saturday, up from 5,286 a week ago,
-    Pitkaniitty said. \n\nMost Russians were entering with Schengen visas for other
-    countries and thus were just passing through. But Helsinki has said it plans
-    to impose an entry ban, even for tourists with Schengen visas. \n\nThe border
-    has seen an uptick in crossings since Moscow announced its partial mobilization
-    of hundreds of thousands of men to be sent to fight in Ukraine.\n\n\nMen flee
-    conscription in Russia\n\nTo view this video please enable JavaScript, and consider
-    upgrading to a web browser that supports HTML5 video More Ukraine-related content
-    on DW \n\nUkraine recently took back the Kharkiv region from Russian occupying
-    forces. Residents who stayed in the region endured extreme hardships. \n\nTwo
-    women from Kharkiv told DW about their experiences during the six-month occupation.
-    \n\nSome German towns and cities are beginning to feel overwhelmed as they try
-    to find proper accommodation for the Ukrainian refugees who made their way West
-    to flee the war. \n\nDW spoke with authorities and organizers who are sounding
-    the alarm about a lack of proper space for people to live. \n\nSoviet tanks and
-    weapons have stood in Berlin for years as memorials of the Soviet Union's victory
-    over Nazi Germany in the Second World War. \n\nOne lawmaker in Berlin spoke with
-    DW about her call for these monuments to be removed in light of the war. \n\nab/wd
-    (Reuters, AFP, dpa, AP, EFE)"
+  m_text: 'In orci tellus, placerat et magna in, ornare pellentesque mi. Vestibulum
+    egestas nisi et enim placerat, et eleifend lacus vehicula. Integer varius tellus
+    varius rhoncus posuere. Fusce nibh sem, interdum id molestie id, finibus sit
+    amet elit. Curabitur sit amet tellus non diam sagittis accumsan at vel nunc.
+    Maecenas euismod mauris nec blandit feugiat. Etiam tincidunt consequat mattis.
+    Curabitur vel ipsum gravida, tincidunt erat sit amet, volutpat magna. Lorem ipsum
+    dolor sit amet, consectetur adipiscing elit. Cras sed enim ut massa ullamcorper
+    semper. Nam ultrices leo sapien, sit amet malesuada dolor iaculis id. Nam tristique
+    lectus eu ante ultrices condimentum. Nam non augue eget urna posuere lacinia.
+
+    
+
+    In
+    hac habitasse platea dictumst. Praesent vitae ipsum a leo auctor ullamcorper
+    at a turpis. Maecenas porttitor leo eu egestas tincidunt. Maecenas rhoncus tempus
+    urna sed congue. Proin aliquet justo eget mauris ultrices, sit amet aliquam libero
+    cursus. Ut mollis mi non turpis fermentum tristique. Quisque venenatis mauris
+    est, eu mollis mi efficitur sed. Mauris justo dui, interdum non quam vitae, suscipit
+    pharetra elit. Nam posuere nunc est. Praesent tincidunt tortor sed lacus varius
+    tempor.
+
+    
+
+    Maecenas sit amet ligula tempor, sagittis nunc dignissim,
+    consequat mauris. Pellentesque finibus porttitor scelerisque. Quisque eget tempor
+    nulla. Nulla at orci lorem. In tempus ex vel elit iaculis tincidunt. Donec vel
+    auctor diam, sed sodales sapien. Fusce pulvinar nunc accumsan condimentum pretium.
+    Etiam pellentesque est id turpis pellentesque consequat. Nam at pellentesque
+    nisi, non cursus augue.
+
+    
+
+    Sed interdum est et enim pellentesque varius.
+    Fusce id scelerisque libero. Quisque maximus dictum egestas. Vestibulum fringilla
+    elit vitae pulvinar maximus. Nam malesuada ultricies convallis. Sed sit amet
+    diam auctor, vestibulum elit sit amet, convallis turpis. Cras ac augue orci.
+    Phasellus tristique dolor eget rutrum faucibus. Aenean mi velit, elementum id
+    erat sit amet, faucibus blandit metus.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a838b2eefbdb45a429da6e252d71d9ba, type: 2}
   m_sharedMaterial: {fileID: -1075884353723441364, guid: a838b2eefbdb45a429da6e252d71d9ba,
@@ -11783,8 +11826,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.858622, y: 3.334444, z: 2.1422591}
-  m_Center: {x: 5.9216533, y: 1.8125801, z: 0.08514648}
+  m_Size: {x: 7.6456876, y: 3.334444, z: 1.7009656}
+  m_Center: {x: 6.3152456, y: 1.8125801, z: -0.13548744}
 --- !u!1001 &1914720420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11931,7 +11974,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.00006484985, y: 0}
+  m_AnchoredPosition: {x: 0.00024414062, y: 0}
   m_SizeDelta: {x: 0, y: 720}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1950321571
