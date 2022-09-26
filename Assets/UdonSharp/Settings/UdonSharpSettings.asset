@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a086a1f2c493ff48bf8686bdf9fb578, type: 3}
   m_Name: UdonSharpSettings
   m_EditorClassIdentifier: 
-  autoCompileOnModify: 1
+  autoCompileOnModify: 0
   waitForFocus: 0
-  disableUploadCompile: 0
+  disableUploadCompile: 1
   newScriptTemplateOverride: {fileID: 0}
   scanningDirectoryBlacklist: []
   defaultBehaviourInterfaceType: 
   buildDebugInfo: 1
   includeInlineCode: 1
-  listenForVRCExceptions: 1
+  listenForVRCExceptions: 0
   shouldForceCompile: 0
   watcherMode: 0
   logWatcherMatchStrings: []
