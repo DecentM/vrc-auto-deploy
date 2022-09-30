@@ -1,10 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using DecentM.EditorTools;
-using DecentM.Metrics.Plugins;
-
-namespace DecentM.VideoPlayer
+﻿namespace DecentM.VideoPlayer
 {
     public struct PluginRequirements
     {

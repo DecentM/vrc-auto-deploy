@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using UnityEditor.SceneManagement;
 using DecentM.EditorTools;
-using DecentM.Metrics.Plugins;
 using VRC.SDK3.Video.Components.Base;
 
 namespace DecentM.VideoRatelimit
