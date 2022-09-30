@@ -10,7 +10,7 @@ namespace World
         {
             PackageExporter.ExportPackage("DecentM.AutoDeploy", new string[]
             {
-            "Assets/DecentM/AutoDeploy"
+                "Assets/DecentM/AutoDeploy"
             });
         }
     }
